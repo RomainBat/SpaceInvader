@@ -14,6 +14,7 @@ import java.awt.Rectangle;
  */
 public class Projectile extends MovingElement{
     
+    //For example (water, fire, blast, explosion, etc)
     private String typeOfProjectile;
 
     public Projectile(String typeOfProjectile, Trajectory trajectory, Rectangle body, Dimension ground) {
@@ -31,9 +32,12 @@ public class Projectile extends MovingElement{
 
     @Override
     public void react() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.move();
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return "Projectile{x="+this.getPosition().x+", y="+this.getPosition().y+'}';
+    }
     
 }

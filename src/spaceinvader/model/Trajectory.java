@@ -26,7 +26,7 @@ public class Trajectory {
     }
     
     public double nextPosY(){
-        return dY+=gravity;
+        return dY+gravity;
     }
     
     public double getGravity() {

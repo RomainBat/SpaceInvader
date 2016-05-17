@@ -42,6 +42,19 @@ public abstract class MovingElement extends GameElement{
         this.getBody().setLocation(p);
     }
     
+    public void move(){
+        if(SpaceInvader.isDebugOn)
+            System.out.println(this.toString());
+        
+        //we define a new point using the actual position of the object and the parameters of his trajectory (direction in X, direction in Y)
+        double newPositionX = getBody().getX() + this.trajectory.nextPosX();
+        double newPositionY = getBody().getY() + this.trajectory.nextPosY();
+        
+        setPosition(new Point((int)newPositionX, (int)newPositionY));
+    }
+    
     public abstract void react();
+    
+    
     
 }
