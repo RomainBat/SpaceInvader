@@ -15,11 +15,11 @@ import java.awt.Rectangle;
  */
 public abstract class MovingElement extends GameElement{
     
-    private Trajectory trajectory;
+    private Moves moves;
 
-    public MovingElement(Trajectory trajectory, Rectangle body, Dimension ground) {
+    public MovingElement(Moves moves, Rectangle body, Dimension ground) {
         super(body, ground);
-        this.trajectory = trajectory;
+        this.moves = moves;
     }
 
     public void setPosition(Point p){
@@ -47,14 +47,20 @@ public abstract class MovingElement extends GameElement{
             System.out.println(this.toString());
         
         //we define a new point using the actual position of the object and the parameters of his trajectory (direction in X, direction in Y)
-        double newPositionX = getBody().getX() + this.trajectory.nextPosX();
-        double newPositionY = getBody().getY() + this.trajectory.nextPosY();
+        double newPositionX = getBody().getX() + this.moves.nextPosX();
+        double newPositionY = getBody().getY() + this.moves.nextPosY();
         
         setPosition(new Point((int)newPositionX, (int)newPositionY));
     }
     
-    public abstract void react();
+    public abstract boolean react();
     
-    
+    public Moves getMoves() {
+        return moves;
+    }
+
+    public void setMoves(Moves moves) {
+        this.moves = moves;
+    }
     
 }

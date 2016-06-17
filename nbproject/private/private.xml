@@ -3,10 +3,24 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/qmatejka/workspace/SpaceInvader/src/spaceinvader/model/Moves.java</file>
+            <file>file:/C:/Users/qmatejka/workspace/SpaceInvader/src/spaceinvader/model/AlternativeMove.java</file>
             <file>file:/C:/Users/qmatejka/workspace/SpaceInvader/src/spaceinvader/model/MovingElement.java</file>
-            <file>file:/C:/Users/qmatejka/workspace/SpaceInvader/src/spaceinvader/model/GameElement.java</file>
-            <file>file:/C:/Users/qmatejka/workspace/SpaceInvader/src/spaceinvader/SpaceInvader.java</file>
+            <file>file:/C:/Users/qmatejka/workspace/SpaceInvader/src/spaceinvader/view/MyGraphic.java</file>
+            <file>file:/C:/Users/qmatejka/workspace/SpaceInvader/src/spaceinvader/model/SpaceInvader.java</file>
+            <file>file:/C:/Users/qmatejka/workspace/SpaceInvader/src/spaceinvader/controler/ShipControler.java</file>
+            <file>file:/C:/Users/qmatejka/workspace/SpaceInvader/src/spaceinvader/model/Observer.java</file>
+            <file>file:/C:/Users/qmatejka/workspace/SpaceInvader/src/spaceinvader/model/Weapon.java</file>
+            <file>file:/C:/Users/qmatejka/workspace/SpaceInvader/src/spaceinvader/model/ClassicWeapon.java</file>
             <file>file:/C:/Users/qmatejka/workspace/SpaceInvader/src/spaceinvader/model/Trajectory.java</file>
+            <file>file:/C:/Users/qmatejka/workspace/SpaceInvader/src/spaceinvader/model/Observable.java</file>
+            <file>file:/C:/Users/qmatejka/workspace/SpaceInvader/src/spaceinvader/model/TrashMob.java</file>
+            <file>file:/C:/Users/qmatejka/workspace/SpaceInvader/src/spaceinvader/model/Spaceship.java</file>
+            <file>file:/C:/Users/qmatejka/workspace/SpaceInvader/src/spaceinvader/model/GameLevel.java</file>
+            <file>file:/C:/Users/qmatejka/workspace/SpaceInvader/src/spaceinvader/model/StraightMove.java</file>
+            <file>file:/C:/Users/qmatejka/workspace/SpaceInvader/src/spaceinvader/model/Projectile.java</file>
+            <file>file:/C:/Users/qmatejka/workspace/SpaceInvader/src/spaceinvader/model/GameElement.java</file>
+            <file>file:/C:/Users/qmatejka/workspace/SpaceInvader/src/spaceinvader/view/GameView.java</file>
         </group>
     </open-files>
 </project-private>

@@ -53,5 +53,8 @@ public class Trajectory {
         this.dY = dY;
     }
     
-    
+    public void invertTrajectory(){
+        this.dX *= -1;
+        this.dY *= -1;
+    }
 }

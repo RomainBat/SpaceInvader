@@ -14,25 +14,23 @@ import java.awt.Rectangle;
  */
 public class Projectile extends MovingElement{
     
-    //For example (water, fire, blast, explosion, etc)
-    private String typeOfProjectile;
-
-    public Projectile(String typeOfProjectile, Trajectory trajectory, Rectangle body, Dimension ground) {
+    private int duration;
+    
+    public Projectile(Moves trajectory, Rectangle body, Dimension ground) {
         super(trajectory, body, ground);
-        this.typeOfProjectile = typeOfProjectile;
-    }
-
-    public String getTypeOfProjectile() {
-        return typeOfProjectile;
-    }
-
-    public void setTypeOfProjectile(String typeOfProjectile) {
-        this.typeOfProjectile = typeOfProjectile;
+        duration = 50;
+        setImagePath("src/spaceinvader/view/classic_projectile_.png");
     }
 
     @Override
-    public void react() {
-        this.move();
+    public boolean react() {
+        if(duration<=0)
+            return false;
+        else{
+            duration--;
+            this.move();
+            return true;
+        }
     }
 
     @Override

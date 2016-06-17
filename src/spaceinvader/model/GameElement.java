@@ -17,6 +17,7 @@ public abstract class GameElement {
     
     private Rectangle body;
     private Dimension ground;
+    private String imagePath;
     
     public GameElement(Rectangle body, Dimension ground){
         this.body = body;
@@ -25,6 +26,14 @@ public abstract class GameElement {
 
     public Point getPosition(){
         return body.getLocation();
+    }
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
     }
     
     public Rectangle getBody() {
@@ -43,6 +52,6 @@ public abstract class GameElement {
         this.ground = ground;
     }
     
-    public abstract void react();
+    public abstract boolean react();
     
 }
