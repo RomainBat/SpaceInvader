@@ -3,12 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package spaceinvader.model;
+package spaceinvader.model.weapons;
+
+import spaceinvader.model.projectiles.Projectile;
 
 /**
  *
- * @author asus
+ * @author qmatejka
  */
-public class Moves {
+public interface Weapon {
+    
+    public Projectile shoot();
     
 }

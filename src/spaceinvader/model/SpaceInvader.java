@@ -10,6 +10,10 @@ import java.awt.Point;
 import java.awt.Rectangle;
 import static java.lang.Thread.sleep;
 import spaceinvader.controler.ShipControler;
+import spaceinvader.model.movements.AlternativeMove;
+import spaceinvader.model.movements.StraightMove;
+import spaceinvader.model.projectiles.Projectile;
+import spaceinvader.model.ships.Spaceship;
 import spaceinvader.view.GameView;
 
 /**
@@ -25,8 +29,8 @@ public class SpaceInvader {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws InterruptedException {        
-        Projectile P2 = new Projectile(new StraightMove(), new Rectangle(10, 10, 4, 12), new Dimension(500, 1000));
+    public static void main(String[] args) throws InterruptedException { 
+        
         /*
         while(gameTime>0){
             if(gameTime==2)
@@ -36,6 +40,11 @@ public class SpaceInvader {
             gameTime--;
         }
         */
+        
+        /***************************************************/
+        /***********CODE AVANT MAJ SELON DIAGRAMME**********/
+        /***************************************************/
+        /*Projectile P2 = new Projectile(new StraightMove(), new Rectangle(10, 10, 4, 12), new Dimension(500, 1000));
         Dimension ground=new Dimension(1280,720);
         
         Projectile P = new Projectile(new AlternativeMove(), new Rectangle(10, 10, 4, 12), new Dimension(10, 10));
@@ -60,7 +69,7 @@ public class SpaceInvader {
             gameLevel.makeGameElementsReact();
             gv.update();
             sleep(1000/60);
-        }
+        }*/
     }
 
 }

@@ -18,10 +18,11 @@ public abstract class GameElement {
     private Rectangle body;
     private Dimension ground;
     private String imagePath;
-    
-    public GameElement(Rectangle body, Dimension ground){
+
+    public GameElement(Rectangle body, Dimension ground, String imagePath){
         this.body = body;
         this.ground = ground;
+        this.imagePath = imagePath;
     }
 
     public Point getPosition(){

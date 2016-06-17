@@ -8,17 +8,21 @@ package spaceinvader.model;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Rectangle;
+import spaceinvader.model.movements.Moves;
 
 /**
  *
  * @author qmatejka
  */
-public abstract class MovingElement extends GameElement{
+public abstract class MovingElement extends GameElement {
     
     private Moves moves;
+    double gravity;
+    double dx;
+    double dy;
 
-    public MovingElement(Moves moves, Rectangle body, Dimension ground) {
-        super(body, ground);
+    public MovingElement(Moves moves, Rectangle body, Dimension ground, String imagePath) {
+        super(body, ground, imagePath);
         this.moves = moves;
     }
 

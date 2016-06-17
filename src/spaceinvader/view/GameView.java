@@ -28,7 +28,7 @@ import spaceinvader.controler.ShipControler;
 import spaceinvader.model.GameElement;
 import spaceinvader.model.GameLevel;
 import spaceinvader.model.Observer;
-import spaceinvader.model.Spaceship;
+import spaceinvader.model.ships.Spaceship;
 
 /**
  *

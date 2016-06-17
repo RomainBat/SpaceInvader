@@ -9,6 +9,7 @@ package spaceinvader.model;
  *
  * @author asus
  */
-public class Moves {
+public class Game {
+    GameLevel level;
     
 }

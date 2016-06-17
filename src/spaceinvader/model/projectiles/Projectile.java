@@ -3,10 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package spaceinvader.model;
+package spaceinvader.model.projectiles;
 
 import java.awt.Dimension;
 import java.awt.Rectangle;
+import spaceinvader.model.movements.Moves;
+import spaceinvader.model.MovingElement;
+import spaceinvader.model.movements.StraightMove;
 
 /**
  *
@@ -14,13 +17,12 @@ import java.awt.Rectangle;
  */
 public class Projectile extends MovingElement{
     
+    int damage;
     private int duration;
-    
-    public Projectile(Moves trajectory, Rectangle body, Dimension ground) {
-        super(trajectory, body, ground);
-        duration = 50;
-        setImagePath("src/spaceinvader/view/classic_projectile_.png");
-    }
+
+    public Projectile(Moves moves, Rectangle body, Dimension ground, String imagePath) {
+        super(moves, body, ground, imagePath);
+    }    
 
     @Override
     public boolean react() {
