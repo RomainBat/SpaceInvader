@@ -7,10 +7,8 @@ package spaceinvader.controler;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.util.HashMap;
 import spaceinvader.model.GameLevel;
-import spaceinvader.model.Projectile;
-import spaceinvader.model.Spaceship;
+import spaceinvader.model.ships.Spaceship;
 
 /**
  *
