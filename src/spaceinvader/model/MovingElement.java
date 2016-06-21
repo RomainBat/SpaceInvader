@@ -17,9 +17,8 @@ import spaceinvader.model.movements.Moves;
 public abstract class MovingElement extends GameElement {
     
     private Moves moves;
-    double gravity;
-    double dx;
-    double dy;
+    private double dx;
+    private double dy;
 
     public MovingElement(Moves moves, Rectangle body, Dimension ground, String imagePath) {
         super(body, ground, imagePath);
@@ -51,10 +50,7 @@ public abstract class MovingElement extends GameElement {
             System.out.println(this.toString());
         
         //we define a new point using the actual position of the object and the parameters of his trajectory (direction in X, direction in Y)
-        double newPositionX = getBody().getX() + this.moves.nextPosX();
-        double newPositionY = getBody().getY() + this.moves.nextPosY();
-        
-        setPosition(new Point((int)newPositionX, (int)newPositionY));
+        setPosition(moves.nextPosition(this.getPosition(), new Point((int)dx, (int)dy)));
     }
     
     public abstract boolean react();
@@ -65,6 +61,22 @@ public abstract class MovingElement extends GameElement {
 
     public void setMoves(Moves moves) {
         this.moves = moves;
+    }
+
+    public double getDx() {
+        return dx;
+    }
+
+    public void setDx(double dx) {
+        this.dx = dx;
+    }
+
+    public double getDy() {
+        return dy;
+    }
+
+    public void setDy(double dy) {
+        this.dy = dy;
     }
     
 }

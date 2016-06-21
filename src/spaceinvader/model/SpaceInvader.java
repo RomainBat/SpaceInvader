@@ -31,27 +31,12 @@ public class SpaceInvader {
      */
     public static void main(String[] args) throws InterruptedException { 
         
-        /*
-        while(gameTime>0){
-            if(gameTime==2)
-                P2.getMoves().invertTrajectory();
-            P2.react();
-            Thread.sleep(400);
-            gameTime--;
-        }
-        */
-        
         /***************************************************/
         /***********CODE AVANT MAJ SELON DIAGRAMME**********/
         /***************************************************/
-        /*Projectile P2 = new Projectile(new StraightMove(), new Rectangle(10, 10, 4, 12), new Dimension(500, 1000));
         Dimension ground=new Dimension(1280,720);
         
-        Projectile P = new Projectile(new AlternativeMove(), new Rectangle(10, 10, 4, 12), new Dimension(10, 10));
-        P.setImagePath("src/spaceinvader/view/classic_projectile.png");
-        
         Spaceship ship = new Spaceship(ground);
-        ship.setImagePath("src/spaceinvader/view/classic_ship.png");
         ship.setPosition(new Point(250, 680));
         
         
@@ -64,12 +49,11 @@ public class SpaceInvader {
         
         
         while(true){
-            //System.out.println(ship.getPosition());
             sc.update();
             gameLevel.makeGameElementsReact();
             gv.update();
             sleep(1000/60);
-        }*/
+        }
     }
 
 }

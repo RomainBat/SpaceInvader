@@ -8,6 +8,7 @@ package spaceinvader.model.weapons;
 import java.awt.Dimension;
 import java.awt.Rectangle;
 import spaceinvader.model.movements.Moves;
+import spaceinvader.model.movements.StraightMove;
 import spaceinvader.model.projectiles.Projectile;
 
 /**
@@ -16,9 +17,11 @@ import spaceinvader.model.projectiles.Projectile;
  */
 public class ClassicWeapon implements Weapon{
 
+    public ClassicWeapon() {}
+
     @Override
     public Projectile shoot() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return new Projectile(new StraightMove(), new Rectangle(20, 20), null, "src/spaceinvader/view/classic_projectile.png");
     }
 
 }

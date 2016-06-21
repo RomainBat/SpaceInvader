@@ -17,7 +17,7 @@ import java.util.logging.Logger;
 public class GameLevel extends Thread{
     private Dimension groundDimension;
     private ArrayList<GameElement> gameElements;
-    private ArrayList<Observer> observatorAttempts;
+    //private ArrayList<Observer> observatorAttempts;
 
     public GameLevel(Dimension groundDimension) {
         this.groundDimension = groundDimension;
@@ -29,9 +29,9 @@ public class GameLevel extends Thread{
     }
     
     public void notifyObservators(){
-        for(Observer obs : observatorAttempts){
-            obs.update();
-        }
+        //for(Observer obs : observatorAttempts){
+        //    obs.update();
+        //}
     }
     
     public void makeGameElementsReact(){

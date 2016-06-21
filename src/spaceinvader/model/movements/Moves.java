@@ -5,6 +5,7 @@
  */
 package spaceinvader.model.movements;
 
+import java.awt.Dimension;
 import java.awt.Point;
 
 /**
@@ -17,10 +18,6 @@ public interface Moves {
     
     public void invertTrajectory();
     
-    public double nextPosX();
-    
-    public double nextPosY();
-    
-    public Trajectory getTrajectory();
-    
+    public Point nextPosition(Point pos, Point direction);
+        
 }

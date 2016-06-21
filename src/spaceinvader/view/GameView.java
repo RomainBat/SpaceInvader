@@ -107,7 +107,8 @@ public class GameView extends JPanel implements Observer{
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         if(!graphicList.isEmpty()){
-            for(MyGraphic graphic : graphicList){ 
+            for(int i=0;i<graphicList.size();i++){
+                MyGraphic graphic = graphicList.get(i);
                 Graphics2D g2d = (Graphics2D)g;
                 try {
                     BufferedImage image = ImageIO.read(new File(graphic.getMyImagePath()));

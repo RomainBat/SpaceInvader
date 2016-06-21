@@ -9,7 +9,6 @@ import java.awt.Dimension;
 import java.awt.Rectangle;
 import spaceinvader.model.movements.Moves;
 import spaceinvader.model.MovingElement;
-import spaceinvader.model.movements.StraightMove;
 
 /**
  *
@@ -22,6 +21,8 @@ public class Projectile extends MovingElement{
 
     public Projectile(Moves moves, Rectangle body, Dimension ground, String imagePath) {
         super(moves, body, ground, imagePath);
+        setDy(-3);
+        duration = 100;
     }    
 
     @Override

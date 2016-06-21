@@ -10,6 +10,11 @@ package spaceinvader.model;
  * @author asus
  */
 public class Game {
-    GameLevel level;
+    
+    private GameLevel level;
+    
+    public Game(){
+        
+    }
     
 }

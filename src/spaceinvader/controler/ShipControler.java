@@ -37,7 +37,7 @@ public class ShipControler implements KeyListener{
     @Override
     public void keyReleased(KeyEvent ke) {
         keys[ke.getKeyCode()] = false;
-        ship.getMoves().getTrajectory().setdX(0);
+        ship.setDx(0);
     }
     
     
@@ -51,11 +51,11 @@ public class ShipControler implements KeyListener{
         }
 
         if(keys[KeyEvent.VK_A] || keys[KeyEvent.VK_LEFT]){
-            ship.getMoves().getTrajectory().setdX(-2);
+            ship.setDx(-2);
         }
 
         if(keys[KeyEvent.VK_D] || keys[KeyEvent.VK_RIGHT]){
-            ship.getMoves().getTrajectory().setdX(2);
+            ship.setDx(2);
         }
         
         if(keys[KeyEvent.VK_SPACE])

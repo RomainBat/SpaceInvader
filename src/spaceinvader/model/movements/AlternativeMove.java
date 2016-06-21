@@ -5,13 +5,14 @@
  */
 package spaceinvader.model.movements;
 
+import java.awt.Point;
+
 /**
  *
  * @author qmatejka
  */
 public class AlternativeMove implements Moves{
 
-    private Trajectory trajectory;
     private int circularPivot = -1;
 
     public AlternativeMove() {
@@ -44,21 +45,8 @@ public class AlternativeMove implements Moves{
     }
 
     @Override
-    public double nextPosX() {
-        double posX = trajectory.nextPosX();
-        return posX;
-    }
-
-    @Override
-    public double nextPosY() {
-        double posY = trajectory.nextPosY();
-        updateTrajectory();
-        return posY;
-    }
-
-    @Override
-    public Trajectory getTrajectory() {
-        return this.trajectory;
+    public Point nextPosition(Point pos, Point direction) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }
