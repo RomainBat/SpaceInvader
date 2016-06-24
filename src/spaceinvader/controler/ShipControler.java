@@ -12,7 +12,7 @@ import spaceinvader.model.projectiles.Projectile;
 import spaceinvader.model.ships.Spaceship;
 
 /**
- *
+ * @version 1.0
  * @author qmatejka
  */
 public class ShipControler implements KeyListener{

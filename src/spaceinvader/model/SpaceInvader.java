@@ -15,6 +15,7 @@ import spaceinvader.controler.ShipControler;
 import spaceinvader.model.movements.AlternativeMove;
 import spaceinvader.model.movements.StraightMove;
 import spaceinvader.model.projectiles.Projectile;
+import spaceinvader.model.ships.ClassicTrashMob;
 import spaceinvader.model.ships.Spaceship;
 import spaceinvader.model.ships.TrashMob;
 import spaceinvader.view.GameView;
@@ -46,7 +47,7 @@ public class SpaceInvader {
         gameLevel.addGameElementToList(ship);
         
         for(int i=0;i<12;i++){
-            TrashMob trash = new TrashMob(ground, gameLevel);
+            TrashMob trash = new ClassicTrashMob(ground, gameLevel);
             trash.setPosition(new Point((int) (100+i*(20+trash.getBody().getWidth())), 100));
             gameLevel.addGameElementToList(trash);
         }

@@ -16,26 +16,33 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 /**
- *
+ * @version 1.0
  * @author asus
  */
 public class MainMenu extends JFrame implements KeyListener{
     
-    public static final int WIDTH = 800;
-    public static final int HEIGHT = 600;
+    public static final int WIDTH = 800; //Size...
+    public static final int HEIGHT = 600; //Of the window
     
-    private final ArrayList<Button> listOfButton = new ArrayList<>();
-    private static final int SIZE = 3;
-    private int selection = 0;
+    private final ArrayList<Button> listOfButton = new ArrayList<>(); //List of Button of the menu
+    private static final int SIZE = 3; //Number of buttons of the menu
+    private int selection = 0; //The index of the button currently selected by the user
     
-    private boolean[] keys = new boolean[100];
-    private boolean pressed = false;
+    private boolean[] keys = new boolean[100]; //needed for key listener
     
-    private final JPanel line1 =new JPanel();
-    private final JPanel line2 =new JPanel();
-    private final JPanel line3 =new JPanel();
-    private final JPanel finalPan = new JPanel();
+    private boolean pressed = false; //needed to not change the selection several times in a row
     
+    private final JPanel line1 =new JPanel(); //first line of button
+    private final JPanel line2 =new JPanel(); //seconfd line of button
+    private final JPanel line3 =new JPanel(); //third line of button
+    private final JPanel finalPan = new JPanel(); //globam JPanel containing the others
+    
+    /**
+     * Creates the menu :
+     *  -create the window
+     *  -adds the list of button
+     *  -print the buttons in the window
+     */
     public MainMenu() {
         
         this.addKeyListener(this);
@@ -66,8 +73,13 @@ public class MainMenu extends JFrame implements KeyListener{
         
         this.getContentPane().add(finalPan);
         this.setVisible(true);
+        
+        select();
     }
     
+    /**
+     * Begins the selection process
+     */
     public void select(){
         while(true){
             if(!pressed){
@@ -81,16 +93,38 @@ public class MainMenu extends JFrame implements KeyListener{
             }
         }
     }
-
+    
+    /**
+     * Creates the menu and launchs it
+     */
+    public void launchMainMenu(){
+        MainMenu mainMenu = new MainMenu();
+        mainMenu.select();
+    }
+    
+    /**
+     * Nothing to declare
+     * @param ke 
+     */
     @Override
     public void keyTyped(KeyEvent ke) {
     }
 
+    /**
+     * Called when a key is pressed
+     * updates which key is pressed
+     * @param ke 
+     */
     @Override
     public void keyPressed(KeyEvent ke) {
         keys[ke.getKeyCode()] = true;
     }
 
+    /**
+     * Called when a key is released
+     * updates the key is released, that no more key is pressed and repaint all the button to visually update which one is selected
+     * @param ke 
+     */
     @Override
     public void keyReleased(KeyEvent ke) {
         keys[ke.getKeyCode()] = false;
@@ -98,6 +132,12 @@ public class MainMenu extends JFrame implements KeyListener{
         this.finalPan.repaint();
     }
     
+    /**
+     * check which key is pressed, and act in consequences :
+     * - up/down : change the selection
+     * - enter/space : confirm the selection
+     * - esc : quit the application
+     */
     public void update() {
         
         if(keys[KeyEvent.VK_W] || keys[KeyEvent.VK_UP]){
@@ -140,12 +180,18 @@ public class MainMenu extends JFrame implements KeyListener{
         }
     }
     
+    /**
+     * increase current selection
+     */
     public void increaseSelection(){
         this.selection ++;
         if(this.selection == this.SIZE)
             this.selection = 0;
     }
     
+    /**
+     * decrease current selection
+     */
     public void decreaseSelection(){
         this.selection --;
         if(this.selection == -1)

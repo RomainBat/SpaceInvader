@@ -18,13 +18,12 @@ import spaceinvader.model.weapons.Weapon;
  */
 public abstract class Ship extends MovingElement{
 
-    int life;
-    Weapon weapon;
+    protected int life;
+    protected Weapon weapon;
     
     public Ship(Moves moves, Rectangle body, Dimension ground, String imagePath) {
         super(moves, body, ground, imagePath);
     }
-
 
     @Override
     public boolean react() {
@@ -32,4 +31,12 @@ public abstract class Ship extends MovingElement{
     } 
     
     public abstract Projectile shoot();
+    
+    public void heal(int value){
+        this.life += value;
+    }
+    
+    public void hurt(int value){
+        this.life -= value;
+    }
 }

@@ -6,7 +6,7 @@
 package spaceinvader.controler;
 
 /**
- *
+ * @version 1.0
  * @author qmatejka
  */
 public interface ShipObserver {

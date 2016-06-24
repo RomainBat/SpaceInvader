@@ -11,6 +11,7 @@ import java.awt.Rectangle;
 import spaceinvader.controler.ShipObserver;
 import spaceinvader.model.GameElement;
 import spaceinvader.model.Observer;
+import spaceinvader.model.items.Item;
 import spaceinvader.model.movements.Moves;
 import spaceinvader.model.movements.StraightMove;
 import spaceinvader.model.projectiles.Projectile;
@@ -23,7 +24,8 @@ import spaceinvader.model.weapons.Weapon;
  */
 public class Spaceship extends Ship{
 
-    private Observer obs;
+    protected Observer obs;
+    protected int liveMax;
     
     public Spaceship(Moves moves, Rectangle body, Dimension ground, String imagePath) {
         super(moves, body, ground, imagePath);
@@ -72,6 +74,18 @@ public class Spaceship extends Ship{
 
     public void setWeapon(Weapon weapon) {
         this.weapon = weapon;
+    }
+    
+    public void setLiveMax(int value){
+        this.liveMax = value;
+    }
+    
+    public void changeLiveMax(int value){
+        this.liveMax += value;
+    }
+    
+    public void useItem(Item item){
+        
     }
 
     @Override

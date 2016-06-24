@@ -16,13 +16,20 @@ import spaceinvader.model.weapons.Weapon;
  *
  * @author asus
  */
-public class Item extends MovingElement{
+public abstract class Item extends MovingElement{
 
     Weapon weapon;
 
     public Item(Moves moves, Rectangle body, Dimension ground, String imagePath) {
         super(moves, body, ground, imagePath);
     } 
+    
+    public Item(Moves moves, Rectangle body, Dimension ground, String imagePath, Weapon weapon) {
+        super(moves, body, ground, imagePath);
+        this.weapon = weapon;
+    } 
+    
+    public abstract void useItem();
     
     @Override
     public boolean react() {

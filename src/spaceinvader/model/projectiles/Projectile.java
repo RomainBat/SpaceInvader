@@ -15,14 +15,15 @@ import spaceinvader.model.MovingElement;
  *
  * @author qmatejka
  */
-public class Projectile extends MovingElement{
+public abstract class Projectile extends MovingElement{
     
     int damage;
     private int duration;
 
-    public Projectile(Moves moves, Rectangle body, Dimension ground, String imagePath) {
+    public Projectile(Moves moves, Rectangle body, Dimension ground, String imagePath, int damage) {
         super(moves, body, ground, imagePath);
         duration = 100;
+        this.damage = damage;
     }    
 
     @Override

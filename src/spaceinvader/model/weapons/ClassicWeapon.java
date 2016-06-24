@@ -5,10 +5,8 @@
  */
 package spaceinvader.model.weapons;
 
-import java.awt.Dimension;
-import java.awt.Rectangle;
-import spaceinvader.model.movements.Moves;
-import spaceinvader.model.movements.StraightMove;
+import spaceinvader.model.projectiles.ClassicProjectile;
+import spaceinvader.model.projectiles.ClassicProjectileEnnemy;
 import spaceinvader.model.projectiles.Projectile;
 
 /**
@@ -29,12 +27,12 @@ public class ClassicWeapon implements Weapon{
         if(!automatique){
             if(charging<=0){
                 charging = 100;
-                return new Projectile(new StraightMove(), new Rectangle(20, 20), null, "src/spaceinvader/view/classic_projectile.png");
+                return new ClassicProjectile();
             }else{
                 return null;
             }
         }else{
-            return new Projectile(new StraightMove(), new Rectangle(20, 20), null, "src/spaceinvader/view/classic_projectile_enemy.png");
+            return new ClassicProjectileEnnemy();
         }
     }
 

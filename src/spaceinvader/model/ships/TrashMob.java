@@ -19,11 +19,10 @@ import spaceinvader.model.weapons.ClassicWeapon;
  *
  * @author qmatejka
  */
-public class TrashMob extends Alien{
+public abstract class TrashMob extends Alien{
     
-    public TrashMob(Dimension ground, GameLevel level) {
-        super(new StraightMove(), new Rectangle(50, 50), ground, "src/spaceinvader/view/classic_alien.png", level);
-        weapon = new ClassicWeapon(true);
+    public TrashMob(Dimension ground, GameLevel level, String imagePath) {
+        super(new StraightMove(), new Rectangle(50, 50), ground, imagePath, level);
     }
 
     @Override
