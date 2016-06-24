@@ -15,6 +15,6 @@ import spaceinvader.model.movements.StraightMove;
 public class ClassicProjectileEnnemy extends Projectile{
      
     public ClassicProjectileEnnemy() {
-        super(new StraightMove(), new Rectangle(20, 20), null, "src/spaceinvader/view/classic_projectile_ennemy.png", 1);
+        super(new StraightMove(), new Rectangle(20, 20), null, "spaceinvader/view/classic_projectile_enemy.png", 1);
     }
 }

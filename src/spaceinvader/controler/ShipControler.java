@@ -51,16 +51,16 @@ public class ShipControler implements KeyListener{
             System.out.println("DOWN");
         }
 
-        if(keys[KeyEvent.VK_A] || keys[KeyEvent.VK_LEFT]){
-            ship.setDx(-2);
+        if(keys[KeyEvent.VK_Q] || keys[KeyEvent.VK_LEFT]){
+            ship.setDx(-4);
             ship.move();
-            ship.notifyObs();
+            //ship.notifyObs();
         }
 
         if(keys[KeyEvent.VK_D] || keys[KeyEvent.VK_RIGHT]){
-            ship.setDx(2);
+            ship.setDx(4);
             ship.move();
-            ship.notifyObs();
+            //ship.notifyObs();
         }
         
         if(keys[KeyEvent.VK_SPACE]){

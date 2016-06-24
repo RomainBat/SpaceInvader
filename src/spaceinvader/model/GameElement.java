@@ -6,8 +6,11 @@
 package spaceinvader.model;
 
 import java.awt.Dimension;
+import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.Rectangle;
+import spaceinvader.view.Sprite;
+import spaceinvader.view.SpriteStore;
 
 /**
  *
@@ -17,18 +20,22 @@ public abstract class GameElement {
     
     private Rectangle body;
     private Dimension ground;
-    private String imagePath;
+    private Sprite sprite;
     private double x;
     private double y;
 
     public GameElement(Rectangle body, Dimension ground, String imagePath){
         this.body = body;
         this.ground = ground;
-        this.imagePath = imagePath;
+        this.sprite = SpriteStore.getStore().getSprite(imagePath);
     }
 
     public boolean isCollidingWith(GameElement ge){
         return ge.getBody().intersects(body);
+    }
+    
+    public void draw(Graphics g){
+        sprite.draw(g, body.x, body.y, body.height, body.width);
     }
     
     public abstract boolean react();
@@ -37,14 +44,6 @@ public abstract class GameElement {
     
     public Point getPosition(){
         return body.getLocation();
-    }
-
-    public String getImagePath() {
-        return imagePath;
-    }
-
-    public void setImagePath(String imagePath) {
-        this.imagePath = imagePath;
     }
     
     public Rectangle getBody() {

@@ -16,7 +16,7 @@ import spaceinvader.model.weapons.ClassicWeapon;
 public class ClassicTrashMob extends TrashMob{
     
     public ClassicTrashMob(Dimension ground, GameLevel level) {
-        super(ground, level, "src/spaceinvader/view/classic_alien.png");
+        super(ground, level, "spaceinvader/view/classic_alien.png");
         weapon = new ClassicWeapon(true);
     }
     

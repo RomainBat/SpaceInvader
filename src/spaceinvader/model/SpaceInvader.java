@@ -7,14 +7,9 @@ package spaceinvader.model;
 
 import java.awt.Dimension;
 import java.awt.Point;
-import java.awt.Rectangle;
-import static java.lang.Thread.sleep;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import spaceinvader.controler.ShipControler;
-import spaceinvader.model.movements.AlternativeMove;
-import spaceinvader.model.movements.StraightMove;
-import spaceinvader.model.projectiles.Projectile;
 import spaceinvader.model.ships.ClassicTrashMob;
 import spaceinvader.model.ships.Spaceship;
 import spaceinvader.model.ships.TrashMob;
@@ -41,15 +36,17 @@ public class SpaceInvader {
         Dimension ground=new Dimension(1280,720);
         
         Spaceship ship = new Spaceship(ground);
-        ship.setPosition(new Point(250, 680));
+        ship.setPosition(new Point(250, 650));
 
         GameLevel gameLevel = new GameLevel(ground);
         gameLevel.addGameElementToList(ship);
         
-        for(int i=0;i<12;i++){
-            TrashMob trash = new ClassicTrashMob(ground, gameLevel);
-            trash.setPosition(new Point((int) (100+i*(20+trash.getBody().getWidth())), 100));
-            gameLevel.addGameElementToList(trash);
+        for(int i=0;i<3;i++){
+            for(int j=0;j<12;j++){
+                TrashMob trash = new ClassicTrashMob(ground, gameLevel);
+                trash.setPosition(new Point((int) (110+j*(20+trash.getBody().getWidth())), (int)(100+i*(20+trash.getBody().getHeight()))));
+                gameLevel.addGameElementToList(trash);
+            }
         }
         
         ShipControler sc = new ShipControler(ship, gameLevel);
@@ -60,6 +57,7 @@ public class SpaceInvader {
         
         while(true){
             sc.update();
+            gv.update();
             gameLevel.makeGameElementsReact();
             try {
                 Thread.sleep(1000/100);

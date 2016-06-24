@@ -32,7 +32,7 @@ public class Spaceship extends Ship{
     }
 
     public Spaceship(Dimension ground) {
-        super(new StraightMove(), new Rectangle(50, 50), ground, "src/spaceinvader/view/classic_ship.png");
+        super(new StraightMove(), new Rectangle(70, 70), ground, "spaceinvader/view/classic_ship.png");
         weapon = new ClassicWeapon(false);
     }
 
@@ -46,7 +46,7 @@ public class Spaceship extends Ship{
     public Projectile shoot(){
         Projectile proj = weapon.shoot();
         if(proj!=null){
-            proj.setDy(-3);
+            proj.setDy(-5);
             proj.setGround(this.getGround());
             Point pos = this.getPosition();
             pos.setLocation(pos.getX()+(this.getBody().width-proj.getBody().width)/2, pos.getY()+proj.getBody().height);
