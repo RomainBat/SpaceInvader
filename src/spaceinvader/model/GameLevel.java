@@ -35,7 +35,8 @@ public class GameLevel extends Thread{
     }
     
     public void makeGameElementsReact(){
-        for(GameElement element : gameElements){
+        for(int i=0;i<gameElements.size();i++){
+            GameElement element = gameElements.get(i);
             if(!element.react())
                 gameElements.remove(element);
         }

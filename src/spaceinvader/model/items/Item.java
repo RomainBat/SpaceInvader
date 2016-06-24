@@ -7,9 +7,9 @@ package spaceinvader.model.items;
 
 import java.awt.Dimension;
 import java.awt.Rectangle;
+import spaceinvader.model.GameElement;
 import spaceinvader.model.movements.Moves;
 import spaceinvader.model.MovingElement;
-import spaceinvader.model.movements.Trajectory;
 import spaceinvader.model.weapons.Weapon;
 
 /**
@@ -26,6 +26,11 @@ public class Item extends MovingElement{
     
     @Override
     public boolean react() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void collidedWith(GameElement ge) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

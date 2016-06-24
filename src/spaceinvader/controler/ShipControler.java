@@ -8,6 +8,7 @@ package spaceinvader.controler;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import spaceinvader.model.GameLevel;
+import spaceinvader.model.projectiles.Projectile;
 import spaceinvader.model.ships.Spaceship;
 
 /**
@@ -52,14 +53,23 @@ public class ShipControler implements KeyListener{
 
         if(keys[KeyEvent.VK_A] || keys[KeyEvent.VK_LEFT]){
             ship.setDx(-2);
+            ship.move();
+            ship.notifyObs();
         }
 
         if(keys[KeyEvent.VK_D] || keys[KeyEvent.VK_RIGHT]){
             ship.setDx(2);
+            ship.move();
+            ship.notifyObs();
         }
         
-        if(keys[KeyEvent.VK_SPACE])
-            gameLevel.addGameElementToList(ship.shoot());
+        if(keys[KeyEvent.VK_SPACE]){
+            Projectile proj = ship.shoot();
+            if(proj!=null){
+                gameLevel.addGameElementToList(proj);
+            }
+        }
+            
     }
 
     public Spaceship getShip() {

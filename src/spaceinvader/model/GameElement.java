@@ -18,6 +18,8 @@ public abstract class GameElement {
     private Rectangle body;
     private Dimension ground;
     private String imagePath;
+    private double x;
+    private double y;
 
     public GameElement(Rectangle body, Dimension ground, String imagePath){
         this.body = body;
@@ -25,6 +27,14 @@ public abstract class GameElement {
         this.imagePath = imagePath;
     }
 
+    public boolean isCollidingWith(GameElement ge){
+        return ge.getBody().intersects(body);
+    }
+    
+    public abstract boolean react();
+    
+    public abstract void collidedWith(GameElement ge);
+    
     public Point getPosition(){
         return body.getLocation();
     }
@@ -52,7 +62,4 @@ public abstract class GameElement {
     public void setGround(Dimension ground) {
         this.ground = ground;
     }
-    
-    public abstract boolean react();
-    
 }

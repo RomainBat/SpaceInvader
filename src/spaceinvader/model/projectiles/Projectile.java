@@ -7,6 +7,7 @@ package spaceinvader.model.projectiles;
 
 import java.awt.Dimension;
 import java.awt.Rectangle;
+import spaceinvader.model.GameElement;
 import spaceinvader.model.movements.Moves;
 import spaceinvader.model.MovingElement;
 
@@ -21,7 +22,6 @@ public class Projectile extends MovingElement{
 
     public Projectile(Moves moves, Rectangle body, Dimension ground, String imagePath) {
         super(moves, body, ground, imagePath);
-        setDy(-3);
         duration = 100;
     }    
 
@@ -39,6 +39,11 @@ public class Projectile extends MovingElement{
     @Override
     public String toString() {
         return "Projectile{x="+this.getPosition().x+", y="+this.getPosition().y+'}';
+    }
+
+    @Override
+    public void collidedWith(GameElement ge) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

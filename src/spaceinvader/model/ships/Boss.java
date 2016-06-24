@@ -7,7 +7,10 @@ package spaceinvader.model.ships;
 
 import java.awt.Dimension;
 import java.awt.Rectangle;
+import spaceinvader.model.GameElement;
+import spaceinvader.model.GameLevel;
 import spaceinvader.model.movements.Moves;
+import spaceinvader.model.projectiles.Projectile;
 
 /**
  *
@@ -15,8 +18,18 @@ import spaceinvader.model.movements.Moves;
  */
 public class Boss extends Alien{
 
-    public Boss(Moves moves, Rectangle body, Dimension ground, String imagePath) {
-        super(moves, body, ground, imagePath);
+    public Boss(Moves moves, Rectangle body, Dimension ground, String imagePath, GameLevel level) {
+        super(moves, body, ground, imagePath, level);
+    }
+
+    @Override
+    public Projectile shoot() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void collidedWith(GameElement ge) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     

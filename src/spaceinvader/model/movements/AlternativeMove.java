@@ -16,12 +16,12 @@ public class AlternativeMove implements Moves{
     private int circularPivot = -1;
 
     public AlternativeMove() {
-        this.trajectory = new Trajectory(0, 5, -5);
+        //this.trajectory = new Trajectory(0, 5, -5);
     }
     
     @Override
     public void updateTrajectory() {
-        double oldDX = this.trajectory.getdX();
+        /**double oldDX = this.trajectory.getdX();
         double oldDY = this.trajectory.getdY();
         double newDX = oldDX;
         double newDY = oldDY;
@@ -37,6 +37,7 @@ public class AlternativeMove implements Moves{
         }
         this.trajectory.setdX(newDX);
         this.trajectory.setdY(newDY);
+        */
     }
 
     @Override

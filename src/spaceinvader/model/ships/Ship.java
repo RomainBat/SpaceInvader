@@ -9,13 +9,14 @@ import java.awt.Dimension;
 import java.awt.Rectangle;
 import spaceinvader.model.movements.Moves;
 import spaceinvader.model.MovingElement;
+import spaceinvader.model.projectiles.Projectile;
 import spaceinvader.model.weapons.Weapon;
 
 /**
  *
  * @author asus
  */
-public class Ship extends MovingElement{
+public abstract class Ship extends MovingElement{
 
     int life;
     Weapon weapon;
@@ -28,5 +29,7 @@ public class Ship extends MovingElement{
     @Override
     public boolean react() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }    
+    } 
+    
+    public abstract Projectile shoot();
 }

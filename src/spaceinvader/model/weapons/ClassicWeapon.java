@@ -17,11 +17,36 @@ import spaceinvader.model.projectiles.Projectile;
  */
 public class ClassicWeapon implements Weapon{
 
-    public ClassicWeapon() {}
-
+    private int charging = 100;
+    private boolean automatique;
+    
+    public ClassicWeapon(boolean auto) {
+        automatique = auto;
+    }
+    
     @Override
     public Projectile shoot() {
-        return new Projectile(new StraightMove(), new Rectangle(20, 20), null, "src/spaceinvader/view/classic_projectile.png");
+        if(!automatique){
+            if(charging<=0){
+                charging = 100;
+                return new Projectile(new StraightMove(), new Rectangle(20, 20), null, "src/spaceinvader/view/classic_projectile.png");
+            }else{
+                return null;
+            }
+        }else{
+            return new Projectile(new StraightMove(), new Rectangle(20, 20), null, "src/spaceinvader/view/classic_projectile_enemy.png");
+        }
     }
+
+    @Override
+    public boolean reload() {
+        if(charging<=0)
+            return false;
+        else
+            charging--;
+        return true;
+    }
+    
+    
 
 }

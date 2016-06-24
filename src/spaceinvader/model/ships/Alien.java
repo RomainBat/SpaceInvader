@@ -7,17 +7,34 @@ package spaceinvader.model.ships;
 
 import java.awt.Dimension;
 import java.awt.Rectangle;
+import spaceinvader.model.GameLevel;
 import spaceinvader.model.movements.Moves;
+import spaceinvader.model.projectiles.Projectile;
 
 /**
  *
  * @author asus
  */
-public class Alien extends Ship{
+public abstract class Alien extends Ship{
     
-    public Alien(Moves moves, Rectangle body, Dimension ground, String imagePath) {
+    private GameLevel level;
+    
+    public Alien(Moves moves, Rectangle body, Dimension ground, String imagePath, GameLevel level) {
         super(moves, body, ground, imagePath);
+        this.level = level;
     }
+    
+    @Override
+    public boolean react() {
+        //this.move();
+        //weapon.reload();
+        boolean shoot = (int)(Math.random()*6000)==1;
+        if(shoot)
+            level.addGameElementToList(this.shoot());
+        return true;
+    }
+
+    public abstract Projectile shoot();
     
     
 }

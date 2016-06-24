@@ -99,7 +99,7 @@ public class GameView extends JPanel implements Observer{
         this.elementsList = gameLevel.getGameElements();
         graphicList.clear();
         for(GameElement ge : elementsList){
-                graphicList.add(new MyGraphic(ge.getPosition(), ge.getBody().getSize(), Color.yellow, Color.black, ge.getImagePath()));
+            graphicList.add(new MyGraphic(ge.getPosition(), ge.getBody().getSize(), Color.yellow, Color.black, ge.getImagePath()));
         }
         this.repaint();
     }
