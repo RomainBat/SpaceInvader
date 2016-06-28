@@ -24,6 +24,9 @@ public class ClassicWeapon implements Weapon{
     
     @Override
     public Projectile shoot() {
+        
+        System.out.println("shoot");
+        
         if(!automatique){
             if(charging<=0){
                 charging = 100;

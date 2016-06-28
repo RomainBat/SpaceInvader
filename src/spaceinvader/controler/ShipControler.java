@@ -17,12 +17,12 @@ import spaceinvader.model.ships.Spaceship;
  */
 public class ShipControler implements KeyListener{
 
-    private Spaceship ship;
+    private Spaceship player;
     private GameLevel gameLevel;
     private boolean[] keys = new boolean[100];
 
     public ShipControler(Spaceship ship, GameLevel gl) {
-        this.ship = ship;
+        this.player = ship;
         gameLevel = gl;
     }
     
@@ -38,7 +38,7 @@ public class ShipControler implements KeyListener{
     @Override
     public void keyReleased(KeyEvent ke) {
         keys[ke.getKeyCode()] = false;
-        ship.setDx(0);
+        player.setDx(0);
     }
     
     
@@ -52,28 +52,29 @@ public class ShipControler implements KeyListener{
         }
 
         if(keys[KeyEvent.VK_Q] || keys[KeyEvent.VK_LEFT]){
-            ship.setDx(-4);
-            ship.move();
+            player.setDx(-4);
+            player.move();
             //ship.notifyObs();
         }
 
         if(keys[KeyEvent.VK_D] || keys[KeyEvent.VK_RIGHT]){
-            ship.setDx(4);
-            ship.move();
+            player.setDx(4);
+            player.move();
             //ship.notifyObs();
         }
         
         if(keys[KeyEvent.VK_SPACE]){
-            Projectile proj = ship.shoot();
+            Projectile proj = player.shoot();
             if(proj!=null){
                 gameLevel.addGameElementToList(proj);
             }
+            System.out.println("SPACE");
         }
             
     }
 
     public Spaceship getShip() {
-        return ship;
+        return player;
     }
     
 }

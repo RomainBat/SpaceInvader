@@ -5,6 +5,8 @@
  */
 package spaceinvader.model;
 
+import spaceinvader.model.ships.Spaceship;
+
 /**
  *
  * @author asus
@@ -12,6 +14,7 @@ package spaceinvader.model;
 public class Game {
     
     private GameLevel level;
+    private Spaceship player;
     
     public Game(){
         

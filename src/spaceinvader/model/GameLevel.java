@@ -6,9 +6,15 @@
 package spaceinvader.model;
 
 import java.awt.Dimension;
+import java.awt.Point;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import spaceinvader.controler.ShipControler;
+import spaceinvader.model.ships.ClassicTrashMob;
+import spaceinvader.model.ships.Spaceship;
+import spaceinvader.model.ships.TrashMob;
+import spaceinvader.view.GameView;
 
 /**
  *
@@ -18,9 +24,24 @@ public class GameLevel extends Thread{
     private Dimension groundDimension;
     private ArrayList<GameElement> gameElements;
     //private ArrayList<Observer> observatorAttempts;
+    
+    private ShipControler sc;
+    private GameView gv;
+            
+            
 
     public GameLevel(Dimension groundDimension) {
         this.groundDimension = groundDimension;
+        gameElements = new ArrayList<GameElement>();
+    }
+    
+    public GameLevel(int x, int y) {
+        this.groundDimension = new Dimension(x,y);
+        gameElements = new ArrayList<GameElement>();
+    }
+    
+    public GameLevel() {
+        this.groundDimension = new Dimension(1280,720);
         gameElements = new ArrayList<GameElement>();
     }
 
@@ -69,6 +90,41 @@ public class GameLevel extends Thread{
 
     public Dimension getGroundDimension() {
         return groundDimension;
+    }
+    
+    public void setLevelTest(){
+        Spaceship ship = new Spaceship(this.groundDimension);
+        ship.setPosition(new Point(250, 650));
+        
+        this.addGameElementToList(ship);
+        
+        for(int i=0;i<3;i++){
+            for(int j=0;j<12;j++){
+                TrashMob trash = new ClassicTrashMob(this.groundDimension, this);
+                trash.setPosition(new Point((int) (110+j*(20+trash.getBody().getWidth())), (int)(100+i*(20+trash.getBody().getHeight()))));
+                this.addGameElementToList(trash);
+            }
+        }
+        
+        sc = new ShipControler(ship, this);
+        
+        gv = new GameView(sc, this);
+        
+        ship.addObserver(gv);
+    }
+    
+    public void doIt(){
+    
+        while(true){
+            sc.update();
+            gv.update();
+            this.makeGameElementsReact();
+            try {
+                Thread.sleep(1000/100);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(SpaceInvader.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }
     
 }

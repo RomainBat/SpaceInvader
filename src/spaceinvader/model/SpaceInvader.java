@@ -20,11 +20,6 @@ import spaceinvader.view.GameView;
  * @author asus
  */
 public class SpaceInvader {
-    
-    public static final boolean isDebugOn = false;
-    private static int gameTime = 6;
-    private static String image = "/image/img.png";
-    
     /**
      * @param args the command line arguments
      */
@@ -33,7 +28,7 @@ public class SpaceInvader {
         /***************************************************/
         /***********CODE AVANT MAJ SELON DIAGRAMME**********/
         /***************************************************/
-        Dimension ground=new Dimension(1280,720);
+        /*Dimension ground=new Dimension(1280,720);
         
         Spaceship ship = new Spaceship(ground);
         ship.setPosition(new Point(250, 650));
@@ -58,13 +53,19 @@ public class SpaceInvader {
         while(true){
             sc.update();
             gv.update();
-            gameLevel.makeGameElementsReact();
+            //gameLevel.makeGameElementsReact();
             try {
                 Thread.sleep(1000/100);
             } catch (InterruptedException ex) {
                 Logger.getLogger(SpaceInvader.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }
+        }*/
+        
+        GameLevel lvlTest = new GameLevel();
+        
+        lvlTest.setLevelTest();
+        
+        lvlTest.doIt();
     }
 
 }

@@ -44,7 +44,8 @@ public abstract class Projectile extends MovingElement{
 
     @Override
     public void collidedWith(GameElement ge) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("Projectile en collision");
     }
     
 }
