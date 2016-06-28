@@ -67,6 +67,10 @@ public class GameLevel extends Thread{
     public void addGameElementToList(GameElement e){
         gameElements.add(0, e);
     }
+    
+    public void removeGameElementFromList(GameElement ge){
+        gameElements.remove(ge);
+    }
 
     public Dimension getGroundDimension() {
         return groundDimension;

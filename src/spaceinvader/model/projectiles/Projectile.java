@@ -7,9 +7,12 @@ package spaceinvader.model.projectiles;
 
 import java.awt.Dimension;
 import java.awt.Rectangle;
+import spaceinvader.controler.ObserverShot;
 import spaceinvader.model.GameElement;
 import spaceinvader.model.movements.Moves;
 import spaceinvader.model.MovingElement;
+import spaceinvader.model.Observable;
+import spaceinvader.model.Observer;
 
 /**
  *
@@ -17,8 +20,9 @@ import spaceinvader.model.MovingElement;
  */
 public abstract class Projectile extends MovingElement{
     
-    int damage;
-    private int duration;
+    int                 damage;
+    private int         duration;
+    private ObserverShot    observer;
 
     public Projectile(Moves moves, Rectangle body, Dimension ground, String imagePath, int damage) {
         super(moves, body, ground, imagePath);
@@ -37,14 +41,21 @@ public abstract class Projectile extends MovingElement{
         }
     }
 
+    public void addObserver(ObserverShot obs) {
+        this.observer=obs;
+    }
+
+    public void removeObserver() {
+        this.observer=null;
+    }
+    
+    public void notifyObserver(GameElement other) {
+        this.observer.update(this, other);
+    }
+    
     @Override
     public String toString() {
         return "Projectile{x="+this.getPosition().x+", y="+this.getPosition().y+'}';
-    }
-
-    @Override
-    public void collidedWith(GameElement ge) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

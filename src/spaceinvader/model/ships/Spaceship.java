@@ -46,7 +46,7 @@ public class Spaceship extends Ship{
     public Projectile shoot(){
         Projectile proj = weapon.shoot();
         if(proj!=null){
-            proj.setDy(-5);
+            proj.setDy(-8);
             proj.setGround(this.getGround());
             Point pos = this.getPosition();
             pos.setLocation(pos.getX()+(this.getBody().width-proj.getBody().width)/2, pos.getY()+proj.getBody().height);

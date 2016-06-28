@@ -10,13 +10,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -24,7 +18,6 @@ import spaceinvader.controler.ShipControler;
 import spaceinvader.model.GameElement;
 import spaceinvader.model.GameLevel;
 import spaceinvader.model.Observer;
-import spaceinvader.model.ships.Spaceship;
 
 /**
  *

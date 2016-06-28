@@ -20,8 +20,8 @@ public class Sprite {
         this.image=img;
     }
     
-    public void draw(Graphics g, int x, int y, int height, int width){
-        g.drawImage(image, x, y, height, width, null);
+    public void draw(Graphics g, int x, int y, int width, int height){
+        g.drawImage(image, x, y, width, height, null);
     }
     
 }

@@ -7,6 +7,7 @@ package spaceinvader.model.ships;
 
 import java.awt.Dimension;
 import java.awt.Rectangle;
+import spaceinvader.controler.ObserverShot;
 import spaceinvader.model.GameLevel;
 import spaceinvader.model.movements.Moves;
 import spaceinvader.model.projectiles.Projectile;
@@ -29,8 +30,13 @@ public abstract class Alien extends Ship{
         //this.move();
         //weapon.reload();
         boolean shoot = (int)(Math.random()*6000)==1;
-        if(shoot)
-            level.addGameElementToList(this.shoot());
+        if(shoot){
+            Projectile proj = this.shoot();
+            if(proj != null){
+                proj.addObserver(new ObserverShot(level));
+                level.addGameElementToList(proj);
+            }
+        }
         return true;
     }
 

@@ -31,7 +31,7 @@ public abstract class GameElement {
     }
 
     public void draw(Graphics g){
-        sprite.draw(g, body.x, body.y, body.height, body.width);
+        sprite.draw(g, body.x, body.y, body.width, body.height);
     }
     
     public boolean isCollidingWith(GameElement other){
@@ -40,7 +40,7 @@ public abstract class GameElement {
     
     public abstract boolean react();
     
-    public abstract void collidedWith(GameElement ge);
+    public abstract void collidedWith(GameElement other);
     
     public Point getPosition(){
         return body.getLocation();

@@ -8,6 +8,7 @@ package spaceinvader.controler;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import spaceinvader.model.GameLevel;
+import spaceinvader.model.Observer;
 import spaceinvader.model.projectiles.Projectile;
 import spaceinvader.model.ships.Spaceship;
 
@@ -66,6 +67,7 @@ public class ShipControler implements KeyListener{
         if(keys[KeyEvent.VK_SPACE]){
             Projectile proj = ship.shoot();
             if(proj!=null){
+                proj.addObserver(new ObserverShot(gameLevel));
                 gameLevel.addGameElementToList(proj);
             }
         }
