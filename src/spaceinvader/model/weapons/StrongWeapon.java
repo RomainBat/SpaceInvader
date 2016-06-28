@@ -5,34 +5,31 @@
  */
 package spaceinvader.model.weapons;
 
-import spaceinvader.model.projectiles.ClassicProjectile;
-import spaceinvader.model.projectiles.ClassicProjectileEnnemy;
 import spaceinvader.model.projectiles.Projectile;
+import spaceinvader.model.projectiles.StrongProjectile;
+import spaceinvader.model.projectiles.StrongProjectileEnnemy;
 
 /**
  *
- * @author qmatejka
+ * @author asus
  */
-public class ClassicWeapon extends Weapon{
-    
-    public ClassicWeapon(boolean isHoldByPlayer) {
+public class StrongWeapon extends Weapon{
+
+    public StrongWeapon(boolean isHoldByPlayer) {
         this.holdByPlayer = isHoldByPlayer;
-        this.chargingMax = 100;
+        this.chargingMax = 200;
     }
-    
+
     @Override
     public Projectile shoot() {
         if(this.charging<=0){
             this.charging = this.chargingMax;
             if(this.holdByPlayer)
-                return new ClassicProjectile();
+                return new StrongProjectile();
             else
-                return new ClassicProjectileEnnemy();
+                return new StrongProjectileEnnemy();
         }else
             return null;
     }
     
-    
-    
-
 }

@@ -10,6 +10,7 @@ import java.awt.Rectangle;
 import spaceinvader.model.GameElement;
 import spaceinvader.model.movements.Moves;
 import spaceinvader.model.MovingElement;
+import spaceinvader.model.ships.Spaceship;
 import spaceinvader.model.weapons.Weapon;
 
 /**
@@ -19,6 +20,7 @@ import spaceinvader.model.weapons.Weapon;
 public abstract class Item extends MovingElement{
 
     Weapon weapon;
+    Spaceship spaceship;
 
     public Item(Moves moves, Rectangle body, Dimension ground, String imagePath) {
         super(moves, body, ground, imagePath);
@@ -29,7 +31,11 @@ public abstract class Item extends MovingElement{
         this.weapon = weapon;
     } 
     
-    public abstract void useItem();
+    public abstract void useItem(Spaceship spaceship);
+    
+    public void setSpaceship(Spaceship spaceship){
+        this.spaceship = spaceship;
+    }
     
     @Override
     public boolean react() {
