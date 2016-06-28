@@ -40,7 +40,7 @@ public abstract class TrashMob extends Alien{
     @Override
     public void collidedWith(GameElement ge) {
         if(ge instanceof ClassicProjectile){
-            t
+            
         }
     }
     
