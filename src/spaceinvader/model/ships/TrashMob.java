@@ -26,7 +26,7 @@ public abstract class TrashMob extends Alien{
 
     @Override
     public Projectile shoot() {
-        Projectile proj = weapon.shoot();
+        Projectile proj = this.weapon.shoot();
         if(proj!=null){
             proj.setDy(3);
             proj.setGround(this.getGround());

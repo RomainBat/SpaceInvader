@@ -13,37 +13,25 @@ import spaceinvader.model.projectiles.Projectile;
  *
  * @author qmatejka
  */
-public class ClassicWeapon implements Weapon{
-
-    private int charging = 100;
-    private boolean automatique;
+public class ClassicWeapon extends Weapon{
     
-    public ClassicWeapon(boolean auto) {
-        automatique = auto;
+    public ClassicWeapon(boolean isHoldByPlayer) {
+        this.holdByPlayer = isHoldByPlayer;
+        this.chargingMax = 100;
     }
     
     @Override
     public Projectile shoot() {
-        if(!automatique){
-            if(charging<=0){
-                charging = 100;
+        if(this.charging<=0){
+            this.charging = this.chargingMax;
+            if(this.holdByPlayer)
                 return new ClassicProjectile();
-            }else{
-                return null;
-            }
-        }else{
-            return new ClassicProjectileEnnemy();
-        }
+            else
+                return new ClassicProjectileEnnemy();
+        }else
+            return null;
     }
-
-    @Override
-    public boolean reload() {
-        if(charging<=0)
-            return false;
-        else
-            charging--;
-        return true;
-    }
+    
     
     
 

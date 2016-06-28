@@ -16,19 +16,16 @@ import spaceinvader.model.ships.Spaceship;
  */
 public class HealthUp extends Item{
 
-    Spaceship spaceship;
     
     public HealthUp(Moves moves, Rectangle body, Dimension ground, String imagePath) {
         super(moves, body, ground, imagePath);
     }
 
     @Override
-    public void useItem() {
-        spaceship.changeLiveMax(1);
+    public void useItem(Spaceship ship) {
+        this.setSpaceship(ship);
+        this.spaceship.changeLiveMax(1);
     }
     
-    public void setSpaceShip(Spaceship spaceship){
-        this.spaceship = spaceship;
-    }
     
 }

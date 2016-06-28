@@ -33,13 +33,13 @@ public class Spaceship extends Ship{
 
     public Spaceship(Dimension ground) {
         super(new StraightMove(), new Rectangle(70, 70), ground, "spaceinvader/view/classic_ship.png");
-        weapon = new ClassicWeapon(false);
+        weapon = new ClassicWeapon(true);
     }
 
     @Override
     public boolean react() {
         //if(this.isCollidingWith(instanceof Projectile)){
-        weapon.reload();
+        this.weapon.reload();
         return true;
     }
     

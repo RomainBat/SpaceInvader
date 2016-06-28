@@ -9,12 +9,21 @@ import spaceinvader.model.projectiles.Projectile;
 
 /**
  *
- * @author qmatejka
+ * @author asus
  */
-public interface Weapon {
+public abstract class Weapon {
     
-    public Projectile shoot();
+    protected int charging = 0;
+    protected int chargingMax;
+    protected boolean holdByPlayer;
     
-    public boolean reload();
+    public abstract Projectile shoot();
     
+    public boolean reload() {
+        if(this.charging<=0)
+            return false;
+        else
+            this.charging--;
+        return true;
+    }
 }
