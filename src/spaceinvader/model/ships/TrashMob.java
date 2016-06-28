@@ -11,6 +11,7 @@ import java.awt.Rectangle;
 import spaceinvader.model.GameElement;
 import spaceinvader.model.GameLevel;
 import spaceinvader.model.movements.StraightMove;
+import spaceinvader.model.projectiles.ClassicProjectile;
 import spaceinvader.model.projectiles.Projectile;
 
 /**
@@ -38,7 +39,9 @@ public abstract class TrashMob extends Alien{
 
     @Override
     public void collidedWith(GameElement ge) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if(ge instanceof ClassicProjectile){
+            t
+        }
     }
     
     

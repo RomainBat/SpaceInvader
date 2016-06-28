@@ -21,7 +21,7 @@ import spaceinvader.view.GameView;
  */
 public class SpaceInvader {
     
-    public static final boolean isDebugOn = true;
+    public static final boolean isDebugOn = false;
     private static int gameTime = 6;
     private static String image = "/image/img.png";
     

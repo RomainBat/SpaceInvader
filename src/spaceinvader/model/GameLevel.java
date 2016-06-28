@@ -35,10 +35,16 @@ public class GameLevel extends Thread{
     }
     
     public void makeGameElementsReact(){
+        GameElement element, other;
         for(int i=0;i<gameElements.size();i++){
-            GameElement element = gameElements.get(i);
-            if(!element.react())
-                gameElements.remove(element);
+            for(int j=i+1;j<gameElements.size();j++){
+                element = gameElements.get(i);
+                other = gameElements.get(j);
+                if(!element.react())
+                    gameElements.remove(element);
+                if(element.isCollidingWith(other))
+                    element.collidedWith(other);
+            }
         }
         //notifyObservators();
     }

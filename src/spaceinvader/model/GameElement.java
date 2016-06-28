@@ -30,12 +30,12 @@ public abstract class GameElement {
         this.sprite = SpriteStore.getStore().getSprite(imagePath);
     }
 
-    public boolean isCollidingWith(GameElement ge){
-        return ge.getBody().intersects(body);
-    }
-    
     public void draw(Graphics g){
         sprite.draw(g, body.x, body.y, body.height, body.width);
+    }
+    
+    public boolean isCollidingWith(GameElement other){
+        return other.getBody().intersects(body);
     }
     
     public abstract boolean react();

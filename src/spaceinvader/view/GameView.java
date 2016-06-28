@@ -45,6 +45,8 @@ public class GameView extends Canvas implements Observer{
     
     private GameLevel gameLevel;
     
+    private Sprite background;
+    
     //L'instance de notre objet contrôleur
     private ShipControler controler;
 
@@ -56,11 +58,14 @@ public class GameView extends Canvas implements Observer{
         
         initComposant();                
 
+        background = SpriteStore.getStore().getSprite("spaceinvader/view/test_bg.jpg");
+        
         addKeyListener(controler);
         requestFocus();
         
         createBufferStrategy(3);
-	strategy = getBufferStrategy();        
+	strategy = getBufferStrategy();     
+        
     }
     
     private void initComposant(){
@@ -96,8 +101,11 @@ public class GameView extends Canvas implements Observer{
     public void update() {
         Graphics g = strategy.getDrawGraphics();
         //Graphics2D g = (Graphics2D) strategy.getDrawGraphics();
-        g.setColor(Color.white);
+        g.setColor(Color.black);
         g.fillRect(10, 10, gameLevel.getGroundDimension().width, gameLevel.getGroundDimension().height);
+        
+        
+        background.draw(g, 10, 10, 1280, 720);
         
         this.elementsList = gameLevel.getGameElements();
         for(GameElement ge : elementsList){
@@ -108,23 +116,5 @@ public class GameView extends Canvas implements Observer{
         strategy.show();
         //this.repaint();
     }
-   
- 
-    /*public void paintComponent(Graphics g){
-        //super.paintComponent(g);
-        if(!graphicList.isEmpty()){
-            for(int i=0;i<graphicList.size();i++){
-                MyGraphic graphic = graphicList.get(i);
-                Graphics2D g2d = (Graphics2D)g;
-                try {
-                    BufferedImage image = ImageIO.read(new File(graphic.getMyImagePath()));
-                    g2d.drawImage(image, graphic.getCoordinate().x, graphic.getCoordinate().y, graphic.getDimension().height,graphic.getDimension().width,null);
-                } catch (IOException ex) {
-                    //Logger.getLogger(GameView.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }
-        
-    }*/
     
 }
