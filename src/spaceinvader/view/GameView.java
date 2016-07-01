@@ -25,7 +25,7 @@ import spaceinvader.model.Observer;
  */
 public class GameView extends Canvas implements Observer{
 
-    private JFrame container = new JFrame();
+    private JFrame container;
     private JPanel panel;
     private BufferStrategy strategy;
     
@@ -48,6 +48,7 @@ public class GameView extends Canvas implements Observer{
         this.controler = controler;     
         this.gameLevel = gameLevel;
         this.elementsList = gameLevel.getGameElements();
+        this.container = new JFrame();
         
         initComposant();                
 
@@ -57,9 +58,27 @@ public class GameView extends Canvas implements Observer{
         requestFocus();
         
         createBufferStrategy(3);
-	strategy = getBufferStrategy();     
-        
+	strategy = getBufferStrategy();
     }
+    
+    public GameView(ShipControler controler, GameLevel gameLevel, JFrame frame){ 
+        this.controler = controler;     
+        this.gameLevel = gameLevel;
+        this.elementsList = gameLevel.getGameElements();
+        this.container = frame;
+        
+        initComposant();                
+
+        background = SpriteStore.getStore().getSprite("spaceinvader/view/test_bg.jpg");
+        
+        addKeyListener(controler);
+        requestFocus();
+        
+        createBufferStrategy(3);
+	strategy = getBufferStrategy();
+    }
+    
+    
     
     private void initComposant(){
         /*
@@ -95,10 +114,10 @@ public class GameView extends Canvas implements Observer{
         Graphics g = strategy.getDrawGraphics();
         //Graphics2D g = (Graphics2D) strategy.getDrawGraphics();
         g.setColor(Color.black);
-        g.fillRect(10, 10, gameLevel.getGroundDimension().width, gameLevel.getGroundDimension().height);
+        g.fillRect(0, 0, gameLevel.getGroundDimension().width, gameLevel.getGroundDimension().height);
         
         
-        background.draw(g, 10, 10, 1280, 720);
+        background.draw(g, 0, 0, 1280, 720);
         
         this.elementsList = gameLevel.getGameElements();
         for(GameElement ge : elementsList){

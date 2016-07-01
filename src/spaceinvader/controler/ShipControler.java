@@ -45,11 +45,9 @@ public class ShipControler implements KeyListener{
     
     public void update() {
         if(keys[KeyEvent.VK_W] || keys[KeyEvent.VK_UP]){
-            System.out.println("UP");
         }
 
         if(keys[KeyEvent.VK_S] || keys[KeyEvent.VK_DOWN]){
-            System.out.println("DOWN");
         }
 
         if(keys[KeyEvent.VK_Q] || keys[KeyEvent.VK_LEFT]){
