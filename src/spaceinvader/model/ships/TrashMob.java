@@ -21,15 +21,15 @@ import spaceinvader.model.projectiles.Projectile;
  */
 public abstract class TrashMob extends Alien{
     
-    public TrashMob(Dimension ground, GameLevel level, String imagePath) {
-        super(new StraightMove(), new Rectangle(70, 70), ground, imagePath, level);
+    public TrashMob(Dimension ground, GameLevel level, String imagePath, int life) {
+        super(new StraightMove(), new Rectangle(70, 70), ground, imagePath, level, life);
     }
 
     @Override
     public Projectile shoot() {
         Projectile proj = this.weapon.shoot();
-        proj.addObserver(new ObserverShot(this.getLevel()));
         if(proj!=null){
+            proj.addObserver(new ObserverShot(this.getLevel()));
             proj.setDy(3);
             proj.setGround(this.getGround());
             Point pos = this.getPosition();

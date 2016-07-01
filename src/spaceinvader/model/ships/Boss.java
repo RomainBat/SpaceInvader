@@ -18,8 +18,8 @@ import spaceinvader.model.projectiles.Projectile;
  */
 public abstract class Boss extends Alien{
 
-    public Boss(Moves moves, Rectangle body, Dimension ground, String imagePath, GameLevel level) {
-        super(moves, body, ground, imagePath, level);
+    public Boss(Moves moves, Rectangle body, Dimension ground, String imagePath, GameLevel level, int life) {
+        super(moves, body, ground, imagePath, level, life);
     }
 
     @Override

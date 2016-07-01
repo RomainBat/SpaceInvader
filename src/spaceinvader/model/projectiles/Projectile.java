@@ -58,6 +58,10 @@ public abstract class Projectile extends MovingElement{
     public void notifyObserver(GameElement other) {
         this.observer.update(this, other);
     }
+
+    public int getDamage() {
+        return damage;
+    }
     
     @Override
     public String toString() {

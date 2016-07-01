@@ -20,8 +20,8 @@ public abstract class Alien extends Ship{
     
     private GameLevel level;
     
-    public Alien(Moves moves, Rectangle body, Dimension ground, String imagePath, GameLevel level) {
-        super(moves, body, ground, imagePath);
+    public Alien(Moves moves, Rectangle body, Dimension ground, String imagePath, GameLevel level, int life) {
+        super(moves, body, ground, imagePath, life);
         this.level = level;
     }
     

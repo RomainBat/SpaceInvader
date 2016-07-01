@@ -61,4 +61,13 @@ public abstract class GameElement {
     public void setGround(Dimension ground) {
         this.ground = ground;
     }
+
+    public Sprite getSprite() {
+        return sprite;
+    }
+
+    public void setSprite(Sprite sprite) {
+        this.sprite = sprite;
+    }
+    
 }

@@ -28,11 +28,11 @@ public class Spaceship extends Ship{
     protected int liveMax;
     
     public Spaceship(Moves moves, Rectangle body, Dimension ground, String imagePath) {
-        super(moves, body, ground, imagePath);
+        super(moves, body, ground, imagePath, 3);
     }
 
     public Spaceship(Dimension ground) {
-        super(new StraightMove(), new Rectangle(70, 70), ground, "spaceinvader/view/classic_ship.png");
+        super(new StraightMove(), new Rectangle(70, 70), ground, "spaceinvader/view/classic_ship.png", 3);
         weapon = new ClassicWeapon(true);
     }
 

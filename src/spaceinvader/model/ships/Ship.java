@@ -21,8 +21,9 @@ public abstract class Ship extends MovingElement{
     protected int life;
     protected Weapon weapon;
     
-    public Ship(Moves moves, Rectangle body, Dimension ground, String imagePath) {
+    public Ship(Moves moves, Rectangle body, Dimension ground, String imagePath, int life) {
         super(moves, body, ground, imagePath);
+        this.life=life;
     }
 
     @Override
@@ -32,11 +33,16 @@ public abstract class Ship extends MovingElement{
     
     public abstract Projectile shoot();
     
+    public boolean isDead(){
+        return (life <= 0);
+    }
+    
     public void heal(int value){
         this.life += value;
     }
     
     public void hurt(int value){
         this.life -= value;
+        //this.setSprite(this.getSprite().getNegative());
     }
 }

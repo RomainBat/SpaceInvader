@@ -17,7 +17,7 @@ public class ClassicWeapon extends Weapon{
     
     public ClassicWeapon(boolean isHoldByPlayer) {
         this.holdByPlayer = isHoldByPlayer;
-        this.chargingMax = 100;
+        this.chargingMax = 10;
     }
     
     @Override

@@ -55,8 +55,8 @@ public class MainMenu extends JFrame implements KeyListener{
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         
-        this.listOfButton.add(new Button("src/spaceinvader/menu/continue",225,50,true));
-        this.listOfButton.add(new Button("src/spaceinvader/menu/newRun",225,50));
+        this.listOfButton.add(new Button("src/spaceinvader/menu/newRun",225,50,true));
+        this.listOfButton.add(new Button("src/spaceinvader/menu/continue",225,50));
         this.listOfButton.add(new Button("src/spaceinvader/menu/settings",225,50));
         
         line1.setLayout(new BoxLayout(line1, BoxLayout.LINE_AXIS));
@@ -161,15 +161,15 @@ public class MainMenu extends JFrame implements KeyListener{
         if(keys[KeyEvent.VK_SPACE] || keys[KeyEvent.VK_ENTER]){
             switch(this.selection){
                 case 0:
-                    System.out.println("Continue");
-                    JOptionPane.showMessageDialog(this, "We're working on it !", "Hold your horses", JOptionPane.INFORMATION_MESSAGE);
-                    break;
-                case 1:
                     System.out.println("New Run");
                     finalPan.setVisible(false);
                     GameLevel game = new GameLevel(this);
                     game.initTestGameLevel();
                     game.run();
+                    break;
+                case 1:
+                    System.out.println("Continue");
+                    JOptionPane.showMessageDialog(this, "We're working on it !", "Hold your horses", JOptionPane.INFORMATION_MESSAGE);
                     break;
                 case 2:
                     System.out.println("Settings");
