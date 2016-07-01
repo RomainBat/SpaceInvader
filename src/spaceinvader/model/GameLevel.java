@@ -10,6 +10,7 @@ import java.awt.Point;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
 import spaceinvader.controler.ShipControler;
 import spaceinvader.model.ships.ClassicTrashMob;
 import spaceinvader.model.ships.Spaceship;
@@ -25,8 +26,8 @@ public class GameLevel extends Thread{
     private Dimension groundDimension;
     private ArrayList<GameElement> gameElements;
     //private ArrayList<Observer> observatorAttempts;
-    public ShipControler sc;
-    public GameView gv;
+    private ShipControler sc;
+    private GameView gv;
     
 
     public GameLevel(Dimension groundDimension) {
@@ -46,11 +47,23 @@ public class GameLevel extends Thread{
         gameElements = new ArrayList<GameElement>();
         
         Spaceship ship = new Spaceship(this.groundDimension);
-        ship.setPosition(new Point(250, 650));
+        ship.setPosition(new Point(this.groundDimension.width/2-ship.getBody().width/2, 650));
         ship.addObserver(gv);
         this.addGameElementToList(ship);
         this.sc = new ShipControler(ship, this);
         this.gv = new GameView(sc, this);
+    }
+    
+    public GameLevel(JFrame frame) {
+        this.groundDimension = new Dimension(1280,720);
+        gameElements = new ArrayList<GameElement>();
+        
+        Spaceship ship = new Spaceship(this.groundDimension);
+        ship.setPosition(new Point(this.groundDimension.width/2-ship.getBody().width/2, 650));
+        ship.addObserver(gv);
+        this.addGameElementToList(ship);
+        this.sc = new ShipControler(ship, this);
+        this.gv = new GameView(sc, this, frame);
     }
 
     public ArrayList<GameElement> getGameElements() {

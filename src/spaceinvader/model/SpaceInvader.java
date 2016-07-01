@@ -10,6 +10,7 @@ import java.awt.Point;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import spaceinvader.controler.ShipControler;
+import spaceinvader.menu.MainMenu;
 import spaceinvader.model.ships.ClassicTrashMob;
 import spaceinvader.model.ships.Spaceship;
 import spaceinvader.model.ships.TrashMob;
@@ -30,11 +31,14 @@ public class SpaceInvader {
      */
     public static void main(String[] args) { 
         
-        GameLevel gameLevel = new GameLevel();
+        /*GameLevel gameLevel = new GameLevel();
         
         gameLevel.initTestGameLevel();
         
-        gameLevel.run();
+        gameLevel.run();*/
+        
+        MainMenu menu = new MainMenu();
+        menu.select();
     }
 
 }

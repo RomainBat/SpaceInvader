@@ -13,7 +13,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.BoxLayout;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import spaceinvader.model.GameLevel;
 
 /**
  * @version 1.0
@@ -35,7 +37,7 @@ public class MainMenu extends JFrame implements KeyListener{
     private final JPanel line1 =new JPanel(); //first line of button
     private final JPanel line2 =new JPanel(); //seconfd line of button
     private final JPanel line3 =new JPanel(); //third line of button
-    private final JPanel finalPan = new JPanel(); //globam JPanel containing the others
+    private final JPanel finalPan = new JPanel(); //global JPanel containing the others
     
     /**
      * Creates the menu :
@@ -160,12 +162,18 @@ public class MainMenu extends JFrame implements KeyListener{
             switch(this.selection){
                 case 0:
                     System.out.println("Continue");
+                    JOptionPane.showMessageDialog(this, "We're working on it !", "Hold your horses", JOptionPane.INFORMATION_MESSAGE);
                     break;
                 case 1:
                     System.out.println("New Run");
+                    finalPan.setVisible(false);
+                    GameLevel game = new GameLevel(this);
+                    game.initTestGameLevel();
+                    game.run();
                     break;
                 case 2:
                     System.out.println("Settings");
+                    JOptionPane.showMessageDialog(this, "We're working on it !", "Hold your horses", JOptionPane.INFORMATION_MESSAGE);
                     break;
                 default:
                     System.out.println("Error");

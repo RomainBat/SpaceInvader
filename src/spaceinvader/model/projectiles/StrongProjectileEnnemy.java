@@ -7,6 +7,7 @@ package spaceinvader.model.projectiles;
 
 import java.awt.Dimension;
 import java.awt.Rectangle;
+import spaceinvader.model.GameElement;
 import spaceinvader.model.movements.Moves;
 import spaceinvader.model.movements.StraightMove;
 
@@ -18,6 +19,11 @@ public class StrongProjectileEnnemy extends Projectile{
     
     public StrongProjectileEnnemy() {
         super(new StraightMove(), new Rectangle(20, 20), null, "spaceinvader/view/classic_projectile_enemy.png", 3);
+    }
+
+    @Override
+    public void collidedWith(GameElement other) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }
