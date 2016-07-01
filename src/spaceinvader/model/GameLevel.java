@@ -6,22 +6,51 @@
 package spaceinvader.model;
 
 import java.awt.Dimension;
+import java.awt.Point;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import spaceinvader.controler.ShipControler;
+import spaceinvader.model.ships.ClassicTrashMob;
+import spaceinvader.model.ships.Spaceship;
+import spaceinvader.model.ships.TrashMob;
+import spaceinvader.view.GameView;
 
 /**
  *
  * @author qmatejka
  */
 public class GameLevel extends Thread{
+    
     private Dimension groundDimension;
     private ArrayList<GameElement> gameElements;
     //private ArrayList<Observer> observatorAttempts;
+    public ShipControler sc;
+    public GameView gv;
+    
 
     public GameLevel(Dimension groundDimension) {
         this.groundDimension = groundDimension;
         gameElements = new ArrayList<GameElement>();
+        
+        Spaceship ship = new Spaceship(this.groundDimension);
+        ship.setPosition(new Point(250, 650));
+        ship.addObserver(gv);
+        this.addGameElementToList(ship);
+        this.sc = new ShipControler(ship, this);
+        this.gv = new GameView(sc, this);
+    }
+    
+    public GameLevel() {
+        this.groundDimension = new Dimension(1280,720);
+        gameElements = new ArrayList<GameElement>();
+        
+        Spaceship ship = new Spaceship(this.groundDimension);
+        ship.setPosition(new Point(250, 650));
+        ship.addObserver(gv);
+        this.addGameElementToList(ship);
+        this.sc = new ShipControler(ship, this);
+        this.gv = new GameView(sc, this);
     }
 
     public ArrayList<GameElement> getGameElements() {
@@ -52,15 +81,15 @@ public class GameLevel extends Thread{
 
     @Override
     public void run() {
-        boolean gameIsNotFinished = true;
-        while(gameIsNotFinished){
-            makeGameElementsReact();
+        while(true){
+            this.sc.update();
+            this.gv.update();
+            this.makeGameElementsReact();
             try {
-                Thread.sleep(40);
+                Thread.sleep(1000/100);
             } catch (InterruptedException ex) {
-                Logger.getLogger(GameLevel.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(SpaceInvader.class.getName()).log(Level.SEVERE, null, ex);
             }
-            interrupt();
         }
     }
     
@@ -74,6 +103,16 @@ public class GameLevel extends Thread{
 
     public Dimension getGroundDimension() {
         return groundDimension;
+    }
+    
+    public void initTestGameLevel(){
+        for(int i=0;i<3;i++){
+            for(int j=0;j<12;j++){
+                TrashMob trash = new ClassicTrashMob(this.groundDimension, this);
+                trash.setPosition(new Point((int) (110+j*(20+trash.getBody().getWidth())), (int)(100+i*(20+trash.getBody().getHeight()))));
+                this.addGameElementToList(trash);
+            }
+        }
     }
     
 }
