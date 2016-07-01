@@ -25,7 +25,6 @@ public class ClassicProjectile extends Projectile{
     @Override
     public void collidedWith(GameElement other) {
         if(other instanceof Alien){
-            System.out.println("touché");
             notifyObserver(other);
         }
     }

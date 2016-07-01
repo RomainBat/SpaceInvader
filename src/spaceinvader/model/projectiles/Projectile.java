@@ -21,26 +21,32 @@ import spaceinvader.model.Observer;
 public abstract class Projectile extends MovingElement{
     
     int                 damage;
-    private int         duration;
     private ObserverShot    observer;
+    //private int         duration;
 
     public Projectile(Moves moves, Rectangle body, Dimension ground, String imagePath, int damage) {
         super(moves, body, ground, imagePath);
-        duration = 100;
+        //duration = 100;
         this.damage = damage;
     }    
 
     @Override
     public boolean react() {
-        if(duration<=0)
+        if(/*duration<=0 || */isOutOfTheScreen()){
             return false;
-        else{
-            duration--;
+        }else{
+            //duration--;
             this.move();
             return true;
         }
     }
 
+    public boolean isOutOfTheScreen(){
+        int x = (int)this.getPosition().getX();
+        int y = (int)this.getPosition().getY();
+        return this.getGround().width<x && this.getGround().height<y;
+    }
+    
     public void addObserver(ObserverShot obs) {
         this.observer=obs;
     }

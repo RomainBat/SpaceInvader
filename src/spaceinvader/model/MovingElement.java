@@ -32,15 +32,15 @@ public abstract class MovingElement extends GameElement {
         double height = this.getGround().getHeight();
         double width = this.getGround().getWidth();
         
-        if(x>width)
-            p.setLocation(width, p.getY());
+        if(x>width-this.getBody().width)
+            p.setLocation(width-this.getBody().width, p.getY());
         else if(x<0)
             p.setLocation(0, p.getY());
         
-        if(y>height)
-            p.setLocation(width, p.getX());
-        else if(y<0)
-            p.setLocation(0, p.getX());
+        //if(y>height+this.getBody().height){
+            //p.setLocation(p.getX(), height);
+        //}else if(y<0-this.getBody().height)
+            //p.setLocation(p.getX(), 0);
         
         this.getBody().setLocation(p);
     }

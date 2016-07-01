@@ -8,6 +8,7 @@ package spaceinvader.model.ships;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Rectangle;
+import spaceinvader.controler.ObserverShot;
 import spaceinvader.model.GameElement;
 import spaceinvader.model.GameLevel;
 import spaceinvader.model.movements.StraightMove;
@@ -27,6 +28,7 @@ public abstract class TrashMob extends Alien{
     @Override
     public Projectile shoot() {
         Projectile proj = this.weapon.shoot();
+        proj.addObserver(new ObserverShot(this.getLevel()));
         if(proj!=null){
             proj.setDy(3);
             proj.setGround(this.getGround());

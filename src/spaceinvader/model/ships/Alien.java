@@ -41,6 +41,9 @@ public abstract class Alien extends Ship{
     }
 
     public abstract Projectile shoot();
-    
+
+    public GameLevel getLevel() {
+        return level;
+    }
     
 }

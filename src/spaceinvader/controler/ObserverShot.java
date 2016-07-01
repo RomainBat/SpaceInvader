@@ -5,8 +5,6 @@
  */
 package spaceinvader.controler;
 
-import java.util.Observable;
-import java.util.Observer;
 import spaceinvader.model.GameElement;
 import spaceinvader.model.GameLevel;
 import spaceinvader.model.projectiles.Projectile;

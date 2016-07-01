@@ -8,6 +8,7 @@ package spaceinvader.model.projectiles;
 import java.awt.Rectangle;
 import spaceinvader.model.GameElement;
 import spaceinvader.model.movements.StraightMove;
+import spaceinvader.model.ships.Spaceship;
 
 /**
  *
@@ -21,6 +22,8 @@ public class ClassicProjectileEnnemy extends Projectile{
 
     @Override
     public void collidedWith(GameElement other) {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if(other instanceof Spaceship){
+            notifyObserver(other);
+        }
     }
 }
