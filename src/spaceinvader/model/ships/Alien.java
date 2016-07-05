@@ -11,6 +11,8 @@ import spaceinvader.controler.ObserverShot;
 import spaceinvader.model.GameLevel;
 import spaceinvader.model.movements.Moves;
 import spaceinvader.model.projectiles.Projectile;
+import spaceinvader.view.Sprite;
+import spaceinvader.view.SpriteStore;
 
 /**
  *
@@ -19,10 +21,12 @@ import spaceinvader.model.projectiles.Projectile;
 public abstract class Alien extends Ship{
     
     private GameLevel level;
+    private Sprite secondSprite;
     
-    public Alien(Moves moves, Rectangle body, Dimension ground, String imagePath, GameLevel level, int life) {
+    public Alien(Moves moves, Rectangle body, Dimension ground, String imagePath, GameLevel level, int life, String secondSpriteRef) {
         super(moves, body, ground, imagePath, life);
         this.level = level;
+        this.secondSprite = SpriteStore.getStore().getSprite(secondSpriteRef);
     }
     
     @Override
@@ -44,6 +48,10 @@ public abstract class Alien extends Ship{
 
     public GameLevel getLevel() {
         return level;
+    }
+
+    public Sprite getSecondSprite() {
+        return secondSprite;
     }
     
 }

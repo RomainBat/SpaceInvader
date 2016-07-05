@@ -69,6 +69,11 @@ public class ShipControler implements KeyListener{
                 gameLevel.addGameElementToList(proj);
             }
         }
+        
+        if(keys[KeyEvent.VK_ESCAPE]){
+            gameLevel.breakTime();
+            System.out.println("c la pause lol");
+        }
             
     }
 

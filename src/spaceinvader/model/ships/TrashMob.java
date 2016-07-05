@@ -22,8 +22,8 @@ import spaceinvader.model.projectiles.Projectile;
  */
 public abstract class TrashMob extends Alien{
     
-    public TrashMob(Dimension ground, GameLevel level, String imagePath, int life, Moves movement) {
-        super(movement, new Rectangle(70, 70), ground, imagePath, level, life);
+    public TrashMob(Dimension ground, GameLevel level, String imagePath, int life, Moves movement, String secondSpriteRef) {
+        super(movement, new Rectangle(70, 56), ground, imagePath, level, life, secondSpriteRef);
     }
 
     @Override

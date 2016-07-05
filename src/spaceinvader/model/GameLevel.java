@@ -15,6 +15,7 @@ import spaceinvader.controler.ShipControler;
 import spaceinvader.model.ships.ClassicTrashMob;
 import spaceinvader.model.ships.Spaceship;
 import spaceinvader.model.ships.TrashMob;
+import spaceinvader.model.weapons.StrongWeapon;
 import spaceinvader.view.GameView;
 
 /**
@@ -49,6 +50,7 @@ public class GameLevel extends Thread{
         Spaceship ship = new Spaceship(this.groundDimension);
         ship.setPosition(new Point(this.groundDimension.width/2-ship.getBody().width/2, 650));
         ship.addObserver(gv);
+                
         this.addGameElementToList(ship);
         this.sc = new ShipControler(ship, this);
         this.gv = new GameView(sc, this);
@@ -61,6 +63,8 @@ public class GameLevel extends Thread{
         Spaceship ship = new Spaceship(this.groundDimension);
         ship.setPosition(new Point(this.groundDimension.width/2-ship.getBody().width/2, 650));
         ship.addObserver(gv);
+
+        
         this.addGameElementToList(ship);
         this.sc = new ShipControler(ship, this);
         this.gv = new GameView(sc, this, frame);
@@ -104,6 +108,10 @@ public class GameLevel extends Thread{
                 Logger.getLogger(SpaceInvader.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+    }
+    
+    public void breakTime(){
+        
     }
     
     public void addGameElementToList(GameElement e){

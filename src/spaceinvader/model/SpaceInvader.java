@@ -5,16 +5,7 @@
  */
 package spaceinvader.model;
 
-import java.awt.Dimension;
-import java.awt.Point;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import spaceinvader.controler.ShipControler;
 import spaceinvader.menu.MainMenu;
-import spaceinvader.model.ships.ClassicTrashMob;
-import spaceinvader.model.ships.Spaceship;
-import spaceinvader.model.ships.TrashMob;
-import spaceinvader.view.GameView;
 
 /**
  *

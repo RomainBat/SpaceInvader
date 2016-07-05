@@ -17,7 +17,7 @@ import spaceinvader.model.movements.RightLeftMove;
 public class ClassicTrashMob extends TrashMob{
     
     public ClassicTrashMob(Dimension ground, GameLevel level) {
-        super(ground, level, "spaceinvader/view/classic_alien_sharpened.png", 2, new RightLeftMove());
+        super(ground, level, "spaceinvader/view/classic_alien_sharpened.png", 2, new RightLeftMove(), "spaceinvader/view/classic_alien_sharpened_broken.png");
         weapon = new ClassicWeapon(false);
         this.setDx(3);
     }
