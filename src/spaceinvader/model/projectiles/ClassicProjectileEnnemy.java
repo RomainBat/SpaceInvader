@@ -17,7 +17,7 @@ import spaceinvader.model.ships.Spaceship;
 public class ClassicProjectileEnnemy extends Projectile{
      
     public ClassicProjectileEnnemy() {
-        super(new StraightMove(), new Rectangle(20, 20), null, "spaceinvader/view/classic_projectile_enemy.png", 1);
+        super(new StraightMove(), new Rectangle(12, 27), null, "spaceinvader/view/classic_projectile_enemy_2.png", 1);
     }
 
     @Override

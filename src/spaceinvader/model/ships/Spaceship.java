@@ -25,7 +25,7 @@ import spaceinvader.model.weapons.Weapon;
 public class Spaceship extends Ship{
 
     protected Observer obs;
-    protected int liveMax;
+    private int liveMax;
     
     public Spaceship(Moves moves, Rectangle body, Dimension ground, String imagePath) {
         super(moves, body, ground, imagePath, 3);
@@ -34,6 +34,7 @@ public class Spaceship extends Ship{
     public Spaceship(Dimension ground) {
         super(new StraightMove(), new Rectangle(70, 70), ground, "spaceinvader/view/classic_ship.png", 3);
         weapon = new ClassicWeapon(true);
+        this.liveMax=5;
     }
 
     @Override
@@ -74,6 +75,10 @@ public class Spaceship extends Ship{
 
     public void setWeapon(Weapon weapon) {
         this.weapon = weapon;
+    }
+
+    public int getLiveMax() {
+        return liveMax;
     }
     
     public void setLiveMax(int value){

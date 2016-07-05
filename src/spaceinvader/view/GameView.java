@@ -36,6 +36,8 @@ public class GameView extends Canvas implements Observer{
     
     private ArrayList<GameElement> elementsList = new ArrayList<GameElement>();
     
+    private HealthBar healthBar;
+    
     private GameLevel gameLevel;
     
     private Sprite background;
@@ -48,6 +50,7 @@ public class GameView extends Canvas implements Observer{
         this.controler = controler;     
         this.gameLevel = gameLevel;
         this.elementsList = gameLevel.getGameElements();
+        
         this.container = new JFrame();
         
         initComposant();                
@@ -65,6 +68,7 @@ public class GameView extends Canvas implements Observer{
         this.controler = controler;     
         this.gameLevel = gameLevel;
         this.elementsList = gameLevel.getGameElements();
+        this.healthBar = new HealthBar(controler.getShip());
         this.container = frame;
         
         initComposant();                
@@ -118,6 +122,7 @@ public class GameView extends Canvas implements Observer{
         
         
         background.draw(g, 0, 0, 1280, 720);
+        healthBar.draw(g);
         
         this.elementsList = gameLevel.getGameElements();
         for(GameElement ge : elementsList){

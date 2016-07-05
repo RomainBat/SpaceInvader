@@ -45,4 +45,9 @@ public abstract class Ship extends MovingElement{
         this.life -= value;
         //this.setSprite(this.getSprite().getNegative());
     }
+
+    public int getLife() {
+        return life;
+    }
+    
 }
