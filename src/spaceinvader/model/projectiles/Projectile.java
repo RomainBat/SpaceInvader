@@ -11,8 +11,6 @@ import spaceinvader.controler.ObserverShot;
 import spaceinvader.model.GameElement;
 import spaceinvader.model.movements.Moves;
 import spaceinvader.model.MovingElement;
-import spaceinvader.model.Observable;
-import spaceinvader.model.Observer;
 
 /**
  *
@@ -22,20 +20,17 @@ public abstract class Projectile extends MovingElement{
     
     int                 damage;
     private ObserverShot    observer;
-    //private int         duration;
 
     public Projectile(Moves moves, Rectangle body, Dimension ground, String imagePath, int damage) {
         super(moves, body, ground, imagePath);
-        //duration = 100;
         this.damage = damage;
     }    
 
     @Override
     public boolean react() {
-        if(/*duration<=0 || */isOutOfTheScreen()){
+        if(isOutOfTheScreen()){
             return false;
         }else{
-            //duration--;
             this.move();
             return true;
         }

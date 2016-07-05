@@ -128,4 +128,10 @@ public class GameLevel extends Thread{
         }
     }
     
+    public void initTestGameLevelMoves(){
+        TrashMob trash = new ClassicTrashMob(this.groundDimension, this);
+        trash.setPosition(new Point(300,100));
+        this.addGameElementToList(trash);
+    }
+    
 }

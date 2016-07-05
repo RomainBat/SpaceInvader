@@ -37,20 +37,17 @@ public abstract class MovingElement extends GameElement {
         else if(x<0)
             p.setLocation(0, p.getY());
         
-        //if(y>height+this.getBody().height){
-            //p.setLocation(p.getX(), height);
-        //}else if(y<0-this.getBody().height)
-            //p.setLocation(p.getX(), 0);
-        
         this.getBody().setLocation(p);
     }
     
     public void move(){
-        //if(SpaceInvader.isDebugOn)
-            //System.out.println(this.toString());
-        
-        //we define a new point using the actual position of the object and the parameters of his trajectory (direction in X, direction in Y)
-        setPosition(moves.nextPosition(this.getPosition(), new Point((int)dx, (int)dy)));
+        //get new dir, then update the position
+        Point newDir = moves.nextPosition(this.getPosition(), new Point((int)dx, (int)dy));
+        this.dx = newDir.x;
+        this.dy = newDir.y;
+        double x = this.getPosition().x + this.dx;
+        double y = this.getPosition().y + this.dy;
+        setPosition(new Point((int)x,(int)y));
     }
     
     public abstract boolean react();

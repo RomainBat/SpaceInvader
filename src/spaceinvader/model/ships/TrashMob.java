@@ -11,6 +11,7 @@ import java.awt.Rectangle;
 import spaceinvader.controler.ObserverShot;
 import spaceinvader.model.GameElement;
 import spaceinvader.model.GameLevel;
+import spaceinvader.model.movements.Moves;
 import spaceinvader.model.movements.StraightMove;
 import spaceinvader.model.projectiles.ClassicProjectile;
 import spaceinvader.model.projectiles.Projectile;
@@ -21,8 +22,8 @@ import spaceinvader.model.projectiles.Projectile;
  */
 public abstract class TrashMob extends Alien{
     
-    public TrashMob(Dimension ground, GameLevel level, String imagePath, int life) {
-        super(new StraightMove(), new Rectangle(70, 70), ground, imagePath, level, life);
+    public TrashMob(Dimension ground, GameLevel level, String imagePath, int life, Moves movement) {
+        super(movement, new Rectangle(70, 70), ground, imagePath, level, life);
     }
 
     @Override

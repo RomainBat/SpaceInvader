@@ -14,10 +14,6 @@ import java.awt.Point;
  */
 public interface Moves {
     
-    public void updateTrajectory();
-    
-    public void invertTrajectory();
-    
     public Point nextPosition(Point pos, Point direction);
         
 }

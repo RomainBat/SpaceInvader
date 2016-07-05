@@ -9,19 +9,19 @@ import java.awt.Point;
 
 /**
  *
- * @author qmatejka
+ * @author asus
  */
-public class AlternativeMove implements Moves{
-
-    private int circularPivot = -1;
-
-    public AlternativeMove() {
-        //this.trajectory = new Trajectory(0, 5, -5);
-    }
+public class RightLeftMove implements Moves{
 
     @Override
     public Point nextPosition(Point pos, Point direction) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("yo");
+        double x = pos.getX();
+        double dx = direction.getX();
+        double dy = direction.getY();
+        if ((x <= 200) || (x >= 600))
+            dx = -dx;
+        return new Point((int)dx, (int)dy);
     }
     
 }
