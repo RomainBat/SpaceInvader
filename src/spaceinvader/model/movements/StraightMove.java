@@ -14,7 +14,7 @@ import java.awt.Point;
 public class StraightMove implements Moves{
 
     @Override
-    public Point nextPosition(Point pos, Point direction) {
+    public Point nextDirection(Point pos, Point direction) {
         return new Point((int)(direction.getX()), (int)(direction.getY()));
     }
     

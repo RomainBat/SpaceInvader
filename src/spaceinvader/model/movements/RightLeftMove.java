@@ -14,12 +14,12 @@ import java.awt.Point;
 public class RightLeftMove implements Moves{
 
     @Override
-    public Point nextPosition(Point pos, Point direction) {
+    public Point nextDirection(Point pos, Point direction) {
         System.out.println("yo");
         double x = pos.getX();
         double dx = direction.getX();
         double dy = direction.getY();
-        if ((x <= 200) || (x >= 600))
+        if ((x <= 50) || (x >= 1150))
             dx = -dx;
         return new Point((int)dx, (int)dy);
     }

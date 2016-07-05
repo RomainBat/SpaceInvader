@@ -42,7 +42,7 @@ public abstract class MovingElement extends GameElement {
     
     public void move(){
         //get new dir, then update the position
-        Point newDir = moves.nextPosition(this.getPosition(), new Point((int)dx, (int)dy));
+        Point newDir = moves.nextDirection(this.getPosition(), new Point((int)dx, (int)dy));
         this.dx = newDir.x;
         this.dy = newDir.y;
         double x = this.getPosition().x + this.dx;

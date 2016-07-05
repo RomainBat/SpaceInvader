@@ -14,6 +14,6 @@ import java.awt.Point;
  */
 public interface Moves {
     
-    public Point nextPosition(Point pos, Point direction);
+    public Point nextDirection(Point pos, Point direction);
         
 }
