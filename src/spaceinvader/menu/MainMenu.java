@@ -164,7 +164,7 @@ public class MainMenu extends JFrame implements KeyListener{
                     System.out.println("New Run");
                     finalPan.setVisible(false);
                     GameLevel game = new GameLevel(this);
-                    game.initTestGameLevel();
+                    game.initTestGameLevelMoves();
                     game.run();
                     break;
                 case 1:

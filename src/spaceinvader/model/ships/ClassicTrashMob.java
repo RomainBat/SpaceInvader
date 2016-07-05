@@ -6,7 +6,10 @@
 package spaceinvader.model.ships;
 
 import java.awt.Dimension;
+import java.awt.Point;
+import spaceinvader.model.GameElement;
 import spaceinvader.model.GameLevel;
+import spaceinvader.model.movements.CrcularMove;
 import spaceinvader.model.weapons.ClassicWeapon;
 import spaceinvader.model.movements.RightLeftMove;
 
@@ -17,7 +20,7 @@ import spaceinvader.model.movements.RightLeftMove;
 public class ClassicTrashMob extends TrashMob{
     
     public ClassicTrashMob(Dimension ground, GameLevel level) {
-        super(ground, level, "spaceinvader/view/classic_alien_sharpened.png", 2, new RightLeftMove());
+        super(ground, level, "spaceinvader/view/classic_alien_sharpened.png", 2, new CrcularMove());
         weapon = new ClassicWeapon(false);
         this.setDx(3);
     }

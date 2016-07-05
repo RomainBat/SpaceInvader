@@ -39,7 +39,6 @@ public class Spaceship extends Ship{
 
     @Override
     public boolean react() {
-        //if(this.isCollidingWith(instanceof Projectile)){
         this.weapon.reload();
         return true;
     }
