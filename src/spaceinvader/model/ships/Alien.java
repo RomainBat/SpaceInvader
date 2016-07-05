@@ -32,7 +32,6 @@ public abstract class Alien extends Ship{
     @Override
     public boolean react() {
         this.move();
-        //weapon.reload();
         boolean shoot = (int)(Math.random()*1000)==1;
         if(shoot){
             Projectile proj = this.shoot();

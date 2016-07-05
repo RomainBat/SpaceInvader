@@ -15,7 +15,6 @@ public class RightLeftMove implements Moves{
 
     @Override
     public Point nextDirection(Point pos, Point direction) {
-        System.out.println("yo");
         double x = pos.getX();
         double dx = direction.getX();
         double dy = direction.getY();
