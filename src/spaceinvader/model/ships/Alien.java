@@ -21,36 +21,17 @@ import spaceinvader.view.SpriteStore;
 public abstract class Alien extends Ship{
     
     private GameLevel level;
-    private Sprite secondSprite;
     
     public Alien(Moves moves, Rectangle body, Dimension ground, String imagePath, GameLevel level, int life, String secondSpriteRef) {
-        super(moves, body, ground, imagePath, life);
+        super(moves, body, ground, imagePath, life, secondSpriteRef);
         this.level = level;
-        this.secondSprite = SpriteStore.getStore().getSprite(secondSpriteRef);
-    }
-    
-    @Override
-    public boolean react() {
-        this.move();
-        boolean shoot = (int)(Math.random()*1000)==1;
-        if(shoot){
-            Projectile proj = this.shoot();
-            if(proj != null){
-                proj.addObserver(new ObserverShot(level));
-                level.addGameElementToList(proj);
-            }
-        }
-        return true;
     }
 
+    @Override
     public abstract Projectile shoot();
 
     public GameLevel getLevel() {
         return level;
-    }
-
-    public Sprite getSecondSprite() {
-        return secondSprite;
     }
     
 }

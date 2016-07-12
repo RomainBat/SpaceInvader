@@ -27,13 +27,13 @@ public class Spaceship extends Ship{
     protected Observer obs;
     private int liveMax;
     
-    public Spaceship(Moves moves, Rectangle body, Dimension ground, String imagePath) {
-        super(moves, body, ground, imagePath, 3);
+    public Spaceship(Moves moves, Rectangle body, Dimension ground, String imagePath, String secondSpriteRef) {
+        super(moves, body, ground, imagePath, 3, secondSpriteRef);
     }
 
     public Spaceship(Dimension ground) {
-        super(new StraightMove(), new Rectangle(70, 70), ground, "spaceinvader/view/classic_ship.png", 3);
-        weapon = new ClassicWeapon(true);
+        super(new StraightMove(), new Rectangle(70, 70), ground, "spaceinvader/view/classic_ship.png", 3, null);
+        weapon = new ClassicWeapon(true, 10);
         this.liveMax=5;
     }
 
@@ -48,10 +48,9 @@ public class Spaceship extends Ship{
     public Projectile shoot(){
         Projectile proj = weapon.shoot();
         if(proj!=null){
-            proj.setDy(-8);
             proj.setGround(this.getGround());
             Point pos = this.getPosition();
-            pos.setLocation(pos.getX()+(this.getBody().width-proj.getBody().width)/2, pos.getY()+proj.getBody().height);
+            pos.setLocation(pos.getX()+(this.getBody().width-proj.getBody().width)/2, pos.getY());
             proj.setPosition(pos);
         }
         return proj;

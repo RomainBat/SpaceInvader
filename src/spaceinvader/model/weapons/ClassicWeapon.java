@@ -15,9 +15,9 @@ import spaceinvader.model.projectiles.Projectile;
  */
 public class ClassicWeapon extends Weapon{
     
-    public ClassicWeapon(boolean isHoldByPlayer) {
+    public ClassicWeapon(boolean isHoldByPlayer, int chargingTime) {
         this.holdByPlayer = isHoldByPlayer;
-        this.chargingMax = 10;
+        this.chargingMax = chargingTime;
     }
     
     @Override

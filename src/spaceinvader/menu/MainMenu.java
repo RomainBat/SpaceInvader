@@ -159,17 +159,22 @@ public class MainMenu extends JFrame implements KeyListener{
         }
         
         if(keys[KeyEvent.VK_SPACE] || keys[KeyEvent.VK_ENTER]){
+            GameLevel game;
             switch(this.selection){
                 case 0:
                     System.out.println("New Run");
                     finalPan.setVisible(false);
-                    GameLevel game = new GameLevel(this);
-                    game.initTestGameLevelMoves();
+                    game = new GameLevel(this);
+                    game.initTestGameLevel();
                     game.run();
                     break;
                 case 1:
                     System.out.println("Continue");
-                    JOptionPane.showMessageDialog(this, "We're working on it !", "Hold your horses", JOptionPane.INFORMATION_MESSAGE);
+                    finalPan.setVisible(false);
+                    game = new GameLevel(this);
+                    game.initTestGameLevelBoss();
+                    game.run();
+                    //JOptionPane.showMessageDialog(this, "We're working on it !", "Hold your horses", JOptionPane.INFORMATION_MESSAGE);
                     break;
                 case 2:
                     System.out.println("Settings");

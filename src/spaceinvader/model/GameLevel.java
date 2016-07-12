@@ -12,6 +12,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
 import spaceinvader.controler.ShipControler;
+import spaceinvader.model.ships.Boss;
 import spaceinvader.model.ships.ClassicTrashMob;
 import spaceinvader.model.ships.Spaceship;
 import spaceinvader.model.ships.TrashMob;
@@ -136,12 +137,10 @@ public class GameLevel extends Thread{
         }
     }
     
-    public void initTestGameLevelMoves(){
-        for(int j=0;j<3;j++){
-            TrashMob trash = new ClassicTrashMob(this.groundDimension, this);
-            trash.setPosition(new Point((int) (100+j*(200+trash.getBody().getWidth())), 100));
-            this.addGameElementToList(trash);
-        }
+    public void initTestGameLevelBoss(){
+        Boss boss = new Boss(this.groundDimension, this) {};
+        boss.setPosition(new Point((groundDimension.width-boss.getBody().width)/2,groundDimension.height/5));
+        this.addGameElementToList(boss);
     }
     
 }

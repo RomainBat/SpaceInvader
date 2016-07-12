@@ -27,14 +27,27 @@ public abstract class TrashMob extends Alien{
     }
 
     @Override
+    public boolean react() {
+        super.react();
+        this.move();
+        boolean shoot = (int)(Math.random()*1000)==1;
+        if(shoot){
+            Projectile proj = this.shoot();
+            if(proj != null){
+                proj.addObserver(new ObserverShot(getLevel()));
+                getLevel().addGameElementToList(proj);
+            }
+        }
+        return true;
+    }
+
+    @Override
     public Projectile shoot() {
         Projectile proj = this.weapon.shoot();
         if(proj!=null){
-            proj.addObserver(new ObserverShot(this.getLevel()));
-            proj.setDy(3);
             proj.setGround(this.getGround());
             Point pos = this.getPosition();
-            pos.setLocation(pos.getX()+(this.getBody().width-proj.getBody().width)/2, pos.getY()+proj.getBody().height);
+            pos.setLocation(pos.getX()+(this.getBody().width-proj.getBody().width)/2, pos.getY()/*+proj.getBody().height*/);
             proj.setPosition(pos);
         }
         return proj;
