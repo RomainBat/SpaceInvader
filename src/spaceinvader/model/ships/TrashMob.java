@@ -59,6 +59,11 @@ public abstract class TrashMob extends Alien{
             
         }
     }
+
+    @Override
+    public String toString() {
+        return "TrashMob{ x=" + this.getPosition().x + " | y=" + this.getPosition().y + '}';
+    }
     
     
 }

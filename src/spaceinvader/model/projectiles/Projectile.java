@@ -35,12 +35,6 @@ public abstract class Projectile extends MovingElement{
             return true;
         }
     }
-
-    public boolean isOutOfTheScreen(){
-        int x = (int)this.getPosition().getX();
-        int y = (int)this.getPosition().getY();
-        return this.getGround().width<x && this.getGround().height<y;
-    }
     
     public void addObserver(ObserverShot obs) {
         this.observer=obs;

@@ -28,6 +28,7 @@ public class GameLevel extends Thread{
     private Dimension groundDimension;
     private ArrayList<GameElement> gameElements;
     //private ArrayList<Observer> observatorAttempts;
+    private TrashMob[][] army = new TrashMob[3][12];
     private ShipControler sc;
     private GameView gv;
     
@@ -103,10 +104,34 @@ public class GameLevel extends Thread{
             this.sc.update();
             this.gv.update();
             this.makeGameElementsReact();
+            checkArmyMove();
             try {
                 Thread.sleep(1000/100);
             } catch (InterruptedException ex) {
                 Logger.getLogger(SpaceInvader.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+    
+    public void checkArmyMove(){
+        int leftLimit = 50;
+        int rightLimit = groundDimension.width - 100;
+        for(int i=0;i<army.length;i++){
+            for(int j=0;j<army[i].length;j++){
+                if(army[i][j].getBody().x <= leftLimit || 
+                   army[i][j].getBody().x >= rightLimit){
+                    System.out.println("invert");
+                    invertTrajectory();
+                    return;
+                }
+            }
+        }
+    }
+    
+    public void invertTrajectory(){
+        for(int i = 0;i<army.length;i++){
+            for(int j = 0;j<army[i].length;j++){
+                army[i][j].setDx(-army[i][j].getDx());
             }
         }
     }
@@ -133,6 +158,7 @@ public class GameLevel extends Thread{
                 TrashMob trash = new ClassicTrashMob(this.groundDimension, this);
                 trash.setPosition(new Point((int) (110+j*(20+trash.getBody().getWidth())), (int)(100+i*(20+trash.getBody().getHeight()))));
                 this.addGameElementToList(trash);
+                army[i][j] = trash;
             }
         }
     }

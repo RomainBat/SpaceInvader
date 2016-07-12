@@ -50,6 +50,12 @@ public abstract class MovingElement extends GameElement {
         setPosition(new Point((int)x,(int)y));
     }
     
+    public boolean isOutOfTheScreen(){
+        int x = (int)this.getPosition().getX();
+        int y = (int)this.getPosition().getY();
+        return this.getGround().width<x && this.getGround().height<y;
+    }
+    
     public abstract boolean react();
     
     public Moves getMoves() {
