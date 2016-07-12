@@ -7,12 +7,9 @@ package spaceinvader.model.ships;
 
 import java.awt.Dimension;
 import java.awt.Rectangle;
-import spaceinvader.controler.ObserverShot;
 import spaceinvader.model.GameLevel;
 import spaceinvader.model.movements.Moves;
 import spaceinvader.model.projectiles.Projectile;
-import spaceinvader.view.Sprite;
-import spaceinvader.view.SpriteStore;
 
 /**
  *

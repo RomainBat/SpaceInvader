@@ -8,6 +8,7 @@ package spaceinvader.model;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.util.ArrayList;
+import java.util.Timer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
@@ -16,7 +17,6 @@ import spaceinvader.model.ships.Boss;
 import spaceinvader.model.ships.ClassicTrashMob;
 import spaceinvader.model.ships.Spaceship;
 import spaceinvader.model.ships.TrashMob;
-import spaceinvader.model.weapons.StrongWeapon;
 import spaceinvader.view.GameView;
 
 /**
@@ -31,8 +31,10 @@ public class GameLevel extends Thread{
     private TrashMob[][] army = new TrashMob[3][12];
     private ShipControler sc;
     private GameView gv;
+    private Timer timer;
+    private int enemyNumber;
     
-
+/*
     public GameLevel(Dimension groundDimension) {
         this.groundDimension = groundDimension;
         gameElements = new ArrayList<GameElement>();
@@ -57,11 +59,11 @@ public class GameLevel extends Thread{
         this.sc = new ShipControler(ship, this);
         this.gv = new GameView(sc, this);
     }
-    
+  */  
     public GameLevel(JFrame frame) {
         this.groundDimension = new Dimension(1280,720);
-        gameElements = new ArrayList<GameElement>();
-        
+        this.gameElements = new ArrayList<GameElement>();
+        this.timer=new Timer();
         Spaceship ship = new Spaceship(this.groundDimension);
         ship.setPosition(new Point(this.groundDimension.width/2-ship.getBody().width/2, 650));
         ship.addObserver(gv);
@@ -100,17 +102,22 @@ public class GameLevel extends Thread{
 
     @Override
     public void run() {
-        while(true){
+        int timer=300;
+        while(enemyNumber>0 || timer>0){
             this.sc.update();
             this.gv.update();
             this.makeGameElementsReact();
             checkArmyMove();
+            
+            if(enemyNumber<=0)
+                timer--;
             try {
                 Thread.sleep(1000/100);
             } catch (InterruptedException ex) {
                 Logger.getLogger(SpaceInvader.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        transitionBoss(new Boss(this.groundDimension, this) {});
     }
     
     public void checkArmyMove(){
@@ -136,6 +143,24 @@ public class GameLevel extends Thread{
         }
     }
     
+    public void transitionBoss(Boss boss){
+        boss.setPosition(new Point((groundDimension.width-boss.getBody().width)/2,0-boss.getBody().height));
+        boss.setDy(1);
+        this.addGameElementToList(boss);
+        while(!boss.isDead()){
+            if(boss.getPosition().y>=groundDimension.height/5)
+                boss.setDy(0);
+            this.sc.update();
+            this.gv.update();
+            this.makeGameElementsReact();
+            try {
+                Thread.sleep(1000/100);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(SpaceInvader.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+    
     public void breakTime(){
         
     }
@@ -145,6 +170,8 @@ public class GameLevel extends Thread{
     }
     
     public void removeGameElementFromList(GameElement ge){
+        if(ge instanceof TrashMob)
+            this.enemyNumber--;
         gameElements.remove(ge);
     }
 
@@ -156,11 +183,13 @@ public class GameLevel extends Thread{
         for(int i=0;i<3;i++){
             for(int j=0;j<12;j++){
                 TrashMob trash = new ClassicTrashMob(this.groundDimension, this);
+                //((ClassicTrashMob)trash).changerPosition(new Point((int) (110+j*(20+trash.getBody().getWidth())), (int)(100+i*(20+trash.getBody().getHeight()))));
                 trash.setPosition(new Point((int) (110+j*(20+trash.getBody().getWidth())), (int)(100+i*(20+trash.getBody().getHeight()))));
                 this.addGameElementToList(trash);
                 army[i][j] = trash;
             }
         }
+        this.enemyNumber=3*12;
     }
     
     public void initTestGameLevelBoss(){
