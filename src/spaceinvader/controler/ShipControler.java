@@ -21,6 +21,7 @@ public class ShipControler implements KeyListener{
     private Spaceship ship;
     private GameLevel gameLevel;
     private boolean[] keys = new boolean[100];
+    private boolean pressed = false;
 
     public ShipControler(Spaceship ship, GameLevel gl) {
         this.ship = ship;
@@ -46,6 +47,7 @@ public class ShipControler implements KeyListener{
     public void keyReleased(KeyEvent ke) {
         keys[ke.getKeyCode()] = false;
         ship.setDx(0);
+        this.pressed = false;
     }
     
     /**
@@ -81,9 +83,10 @@ public class ShipControler implements KeyListener{
             }
         }
         
-        if(keys[KeyEvent.VK_ESCAPE]){
+        if(keys[KeyEvent.VK_ESCAPE] && (!this.pressed)){
             gameLevel.breakTime();
             System.out.println("c la pause lol");
+            this.pressed = true;
         }
             
     }

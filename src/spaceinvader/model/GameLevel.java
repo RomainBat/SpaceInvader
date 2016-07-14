@@ -41,6 +41,7 @@ public class GameLevel extends Thread{
     private Timer timer;
     private int enemyNumber;
     private BonusAlien bonusAlien;
+    protected boolean pause = false;
     
 /*
     public GameLevel(Dimension groundDimension) {
@@ -115,17 +116,19 @@ public class GameLevel extends Thread{
         int timer=100;
         while(enemyNumber>0 || timer>0){
             this.sc.update();
-            this.gv.update();
-            this.makeGameElementsReact();
-            callTheBonusAlien();
-            //checkArmyMove();
-            
-            //if(enemyNumber<=0)
-            //    timer--;
-            try {
-                Thread.sleep(1000/100);
-            } catch (InterruptedException ex) {
-                Logger.getLogger(SpaceInvader.class.getName()).log(Level.SEVERE, null, ex);
+            if(!pause){
+                this.gv.update();
+                this.makeGameElementsReact();
+                callTheBonusAlien();
+                //checkArmyMove();
+
+                //if(enemyNumber<=0)
+                //    timer--;
+                try {
+                    Thread.sleep(1000/100);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(SpaceInvader.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         }
         //transitionBoss(new Boss(this.groundDimension, this) {});
@@ -187,7 +190,7 @@ public class GameLevel extends Thread{
     }
     
     public void breakTime(){
-        
+        this.pause = !this.pause;
     }
     
     public void addGameElementToList(GameElement e){
