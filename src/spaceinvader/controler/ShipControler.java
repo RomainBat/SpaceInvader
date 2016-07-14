@@ -7,8 +7,8 @@ package spaceinvader.controler;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.ArrayList;
 import spaceinvader.model.GameLevel;
-import spaceinvader.model.Observer;
 import spaceinvader.model.projectiles.Projectile;
 import spaceinvader.model.ships.Spaceship;
 
@@ -31,18 +31,27 @@ public class ShipControler implements KeyListener{
     public void keyTyped(KeyEvent ke) {
     }
 
+    /*
+    * When a key is pressed, make her boolean at true in the boolean array
+    */
     @Override
     public void keyPressed(KeyEvent ke) {
         keys[ke.getKeyCode()] = true;
     }
 
+    /*
+    * When a key is released, make her boolean at false in the boolean array and set the direction of the spaceship at 0.
+    */
     @Override
     public void keyReleased(KeyEvent ke) {
         keys[ke.getKeyCode()] = false;
         ship.setDx(0);
     }
     
-    
+    /**
+     * This method is called in every frame in the while loop to see if the player pressed a key.
+     * We don't use a switch to be able to manage 2 events if the player hits 2 key in the same time.
+     */
     public void update() {
         if(keys[KeyEvent.VK_W] || keys[KeyEvent.VK_UP]){
         }
@@ -63,10 +72,12 @@ public class ShipControler implements KeyListener{
         }
         
         if(keys[KeyEvent.VK_SPACE]){
-            Projectile proj = ship.shoot();
-            if(proj!=null){
-                proj.addObserver(new ObserverShot(gameLevel));
-                gameLevel.addGameElementToList(proj);
+            ArrayList<Projectile> projs = ship.shoot();
+            for(Projectile proj : projs){
+                if(proj!=null){
+                    proj.addObserver(new ObserverShot(gameLevel));
+                    gameLevel.addGameElementToList(proj);
+                }
             }
         }
         

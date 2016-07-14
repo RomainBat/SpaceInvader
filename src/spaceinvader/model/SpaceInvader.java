@@ -5,7 +5,10 @@
  */
 package spaceinvader.model;
 
+import java.util.ArrayList;
 import spaceinvader.menu.MainMenu;
+import spaceinvader.model.projectiles.ClassicProjectile;
+import spaceinvader.model.projectiles.Projectile;
 
 /**
  *

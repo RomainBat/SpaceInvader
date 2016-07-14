@@ -9,18 +9,18 @@ import java.util.ArrayList;
 import spaceinvader.model.projectiles.ClassicProjectile;
 import spaceinvader.model.projectiles.ClassicProjectileEnnemy;
 import spaceinvader.model.projectiles.Projectile;
-import spaceinvader.model.projectiles.StrongProjectile;
-import spaceinvader.model.projectiles.StrongProjectileEnnemy;
 
 /**
  *
- * @author asus
+ * @author qmatejka
  */
-public class StrongWeapon extends Weapon{
+public class DoubleShotWeapon extends Weapon{
 
-    public StrongWeapon(boolean isHoldByPlayer) {
+    private int projNumber=2;
+    
+    public DoubleShotWeapon(boolean isHoldByPlayer) {
         this.holdByPlayer = isHoldByPlayer;
-        this.chargingMax = 200;
+        this.chargingMax = 20;
     }
 
     @Override
@@ -28,10 +28,12 @@ public class StrongWeapon extends Weapon{
         ArrayList<Projectile> projs = new ArrayList<Projectile>();
         if(this.charging<=0){
             this.charging = this.chargingMax;
-            if(this.holdByPlayer)
-                projs.add(new StrongProjectile());
-            else
-                projs.add(new StrongProjectileEnnemy());
+            for(int i=0;i<projNumber;i++){
+                if(this.holdByPlayer)
+                    projs.add(new ClassicProjectile());
+                else
+                    projs.add(new ClassicProjectileEnnemy());
+            }
         }
         return projs;
     }

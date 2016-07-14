@@ -27,7 +27,7 @@ public class Sprite {
     }
     
     public void draw(Graphics g, int x, int y, int width, int height){
-        g.drawImage(image, x, y, width, height, null);
+        g.drawImage(image, x, y, (int)(width*1), (int)(height*1), null);
     }
     
     public BufferedImage negativeImage(){

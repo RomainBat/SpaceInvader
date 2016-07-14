@@ -5,15 +5,19 @@
         <group>
             <file>file:/C:/Users/qmatejka/workspace/SpaceInvader/src/spaceinvader/view/Sprite.java</file>
             <file>file:/C:/Users/qmatejka/workspace/SpaceInvader/src/spaceinvader/model/ships/Alien.java</file>
+            <file>file:/C:/Users/qmatejka/workspace/SpaceInvader/src/spaceinvader/model/movements/CircularMove.java</file>
             <file>file:/C:/Users/qmatejka/workspace/SpaceInvader/src/spaceinvader/model/projectiles/ClassicProjectile.java</file>
             <file>file:/C:/Users/qmatejka/workspace/SpaceInvader/src/spaceinvader/controler/ObserverShot.java</file>
             <file>file:/C:/Users/qmatejka/workspace/SpaceInvader/src/spaceinvader/model/weapons/StrongWeapon.java</file>
-            <file>file:/C:/Users/qmatejka/workspace/SpaceInvader/src/spaceinvader/model/Observer.java</file>
+            <file>file:/C:/Users/qmatejka/workspace/SpaceInvader/src/spaceinvader/model/movements/AlternativeMove.java</file>
             <file>file:/C:/Users/qmatejka/workspace/SpaceInvader/src/spaceinvader/model/projectiles/ClassicProjectileEnnemy.java</file>
             <file>file:/C:/Users/qmatejka/workspace/SpaceInvader/src/spaceinvader/model/projectiles/Projectile.java</file>
+            <file>file:/C:/Users/qmatejka/workspace/SpaceInvader/src/spaceinvader/model/movements/RightLeftMove.java</file>
             <file>file:/C:/Users/qmatejka/workspace/SpaceInvader/src/spaceinvader/model/GameLevel.java</file>
             <file>file:/C:/Users/qmatejka/workspace/SpaceInvader/src/spaceinvader/controler/ShipObserver.java</file>
+            <file>file:/C:/Users/qmatejka/workspace/SpaceInvader/src/spaceinvader/model/movements/Moves.java</file>
             <file>file:/C:/Users/qmatejka/workspace/SpaceInvader/src/spaceinvader/model/ships/Boss.java</file>
+            <file>file:/C:/Users/qmatejka/workspace/SpaceInvader/src/spaceinvader/model/movements/StraightMove.java</file>
             <file>file:/C:/Users/qmatejka/workspace/SpaceInvader/src/spaceinvader/model/MovingElement.java</file>
             <file>file:/C:/Users/qmatejka/workspace/SpaceInvader/src/spaceinvader/model/Game.java</file>
             <file>file:/C:/Users/qmatejka/workspace/SpaceInvader/src/spaceinvader/model/ships/TrashMob.java</file>
@@ -21,6 +25,7 @@
             <file>file:/C:/Users/qmatejka/workspace/SpaceInvader/src/spaceinvader/controler/ShipControler.java</file>
             <file>file:/C:/Users/qmatejka/workspace/SpaceInvader/src/spaceinvader/model/projectiles/StrongProjectileEnnemy.java</file>
             <file>file:/C:/Users/qmatejka/workspace/SpaceInvader/src/spaceinvader/menu/MainMenu.java</file>
+            <file>file:/C:/Users/qmatejka/workspace/SpaceInvader/src/spaceinvader/view/classic_ship_0.png</file>
             <file>file:/C:/Users/qmatejka/workspace/SpaceInvader/src/spaceinvader/view/SpriteStore.java</file>
             <file>file:/C:/Users/qmatejka/workspace/SpaceInvader/src/spaceinvader/model/ships/Ship.java</file>
             <file>file:/C:/Users/qmatejka/workspace/SpaceInvader/src/spaceinvader/model/projectiles/StrongProjectile.java</file>

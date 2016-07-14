@@ -17,7 +17,7 @@ import spaceinvader.model.ships.Alien;
 public class ClassicProjectile extends Projectile{
         
     public ClassicProjectile() {
-        super(new StraightMove(), new Rectangle(16, 36), null, "spaceinvader/view/classic_projectile_.png", 1);
+        super(new StraightMove(), new Rectangle(16, 36), null, "spaceinvader/view/classic_projectile_red.png", 1);
         this.setDy(-8);
     }
 

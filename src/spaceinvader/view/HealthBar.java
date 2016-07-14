@@ -5,9 +5,7 @@
  */
 package spaceinvader.view;
 
-import java.awt.Dimension;
 import java.awt.Graphics;
-import javax.swing.JPanel;
 import spaceinvader.model.ships.Spaceship;
 
 /**
@@ -16,6 +14,8 @@ import spaceinvader.model.ships.Spaceship;
  */
 public class HealthBar{
     
+    private boolean white = true;
+    
     private Spaceship ship;
     private Sprite heart;
     private Sprite emptyHeart;
@@ -23,8 +23,13 @@ public class HealthBar{
 
     public HealthBar(Spaceship ship) {
         this.ship = ship;
-        this.heart = SpriteStore.getStore().getSprite("spaceinvader/view/heart_full.png");
-        this.emptyHeart = SpriteStore.getStore().getSprite("spaceinvader/view/heart_empty.png");
+        if(white){
+            this.heart = SpriteStore.getStore().getSprite("spaceinvader/view/heart_full_white.png");
+            this.emptyHeart = SpriteStore.getStore().getSprite("spaceinvader/view/heart_empty_white.png");
+        }else{
+            this.heart = SpriteStore.getStore().getSprite("spaceinvader/view/heart_full.png");
+            this.emptyHeart = SpriteStore.getStore().getSprite("spaceinvader/view/heart_empty.png");
+        }
         this.heartSize = 30;
     }
     
