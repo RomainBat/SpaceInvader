@@ -7,6 +7,7 @@ package spaceinvader.model.ships;
 
 import java.awt.Dimension;
 import java.awt.Point;
+import spaceinvader.model.GameElement;
 import spaceinvader.model.GameLevel;
 import spaceinvader.model.movements.CircularMove;
 import spaceinvader.model.movements.StraightMove;
@@ -23,5 +24,11 @@ public class ClassicTrashMob extends TrashMob{
         weapon = new ClassicWeapon(false, 0);
         this.setDx(3);
     }
-    
+
+    @Override
+    public void collidedWith(GameElement other) {
+        if(other instanceof Spaceship)
+            ((Spaceship)other).hurt(1);
+    }
+
 }

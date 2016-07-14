@@ -20,6 +20,7 @@ import spaceinvader.model.movements.CircularMove;
 import spaceinvader.model.movements.StraightMove;
 import spaceinvader.model.ships.BonusAlien;
 import spaceinvader.model.ships.Boss;
+import spaceinvader.model.ships.CircledTrashMob;
 import spaceinvader.model.ships.ClassicTrashMob;
 import spaceinvader.model.ships.Spaceship;
 import spaceinvader.model.ships.TrashMob;
@@ -117,17 +118,17 @@ public class GameLevel extends Thread{
             this.gv.update();
             this.makeGameElementsReact();
             callTheBonusAlien();
-            checkArmyMove();
+            //checkArmyMove();
             
-            if(enemyNumber<=0)
-                timer--;
+            //if(enemyNumber<=0)
+            //    timer--;
             try {
                 Thread.sleep(1000/100);
             } catch (InterruptedException ex) {
                 Logger.getLogger(SpaceInvader.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        transitionBoss(new Boss(this.groundDimension, this) {});
+        //transitionBoss(new Boss(this.groundDimension, this) {});
     }
     
     public void checkArmyMove(){
@@ -205,6 +206,11 @@ public class GameLevel extends Thread{
 
     public Dimension getGroundDimension() {
         return groundDimension;
+    }
+    
+    public void initTestGameLevelCircular(){
+        TrashMob trash = new CircledTrashMob(this.groundDimension, this, 300, 200, 100);
+        this.addGameElementToList(trash);
     }
     
     public void initTestGameLevel(){

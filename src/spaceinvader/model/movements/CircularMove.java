@@ -20,6 +20,13 @@ public class CircularMove implements Moves
     private int ox;
     private int oy;
 
+    public CircularMove(int ox, int oy, int radius) {
+        this.ox = ox;
+        this.oy = oy;
+        this.radius = radius;
+        angle = Math.random()*(2*Math.PI);
+    }
+    
     public void setAll(int ox, int oy, int radius) {
         this.ox = ox;
         this.oy = oy;
