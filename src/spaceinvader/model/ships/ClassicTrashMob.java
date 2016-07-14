@@ -24,9 +24,4 @@ public class ClassicTrashMob extends TrashMob{
         this.setDx(3);
     }
     
-    public void changerPosition(Point p){
-        this.setPosition(p);
-        ((CircularMove)(this.getMoves())).setAll(this.getPosition().x, this.getPosition().y, 100);
-    }
-    
 }
