@@ -5,6 +5,7 @@
  */
 package spaceinvader.model.weapons;
 
+import java.util.ArrayList;
 import spaceinvader.model.projectiles.Projectile;
 
 /**
@@ -17,7 +18,7 @@ public abstract class Weapon {
     protected int chargingMax;
     protected boolean holdByPlayer;
     
-    public abstract Projectile shoot();
+    public abstract ArrayList<Projectile> shoot();
     
     public boolean reload() {
         if(this.charging<=0)

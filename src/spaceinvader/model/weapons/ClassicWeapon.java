@@ -5,6 +5,7 @@
  */
 package spaceinvader.model.weapons;
 
+import java.util.ArrayList;
 import spaceinvader.model.projectiles.ClassicProjectile;
 import spaceinvader.model.projectiles.ClassicProjectileEnnemy;
 import spaceinvader.model.projectiles.Projectile;
@@ -21,15 +22,16 @@ public class ClassicWeapon extends Weapon{
     }
     
     @Override
-    public Projectile shoot() {
+    public ArrayList<Projectile> shoot() {
+        ArrayList<Projectile> projs = new ArrayList<Projectile>();
         if(this.charging<=0){
             this.charging = this.chargingMax;
             if(this.holdByPlayer)
-                return new ClassicProjectile();
+                projs.add(new ClassicProjectile());
             else
-                return new ClassicProjectileEnnemy();
-        }else
-            return null;
+                projs.add(new ClassicProjectileEnnemy());
+        }
+        return projs;
     }
     
     

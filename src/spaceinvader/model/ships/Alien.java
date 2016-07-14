@@ -7,6 +7,7 @@ package spaceinvader.model.ships;
 
 import java.awt.Dimension;
 import java.awt.Rectangle;
+import java.util.ArrayList;
 import spaceinvader.model.GameLevel;
 import spaceinvader.model.movements.Moves;
 import spaceinvader.model.projectiles.Projectile;
@@ -25,7 +26,7 @@ public abstract class Alien extends Ship{
     }
 
     @Override
-    public abstract Projectile shoot();
+    public abstract ArrayList<Projectile> shoot();
 
     public GameLevel getLevel() {
         return level;

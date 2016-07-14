@@ -42,28 +42,13 @@ public class GameView extends Canvas implements Observer{
     
     private Sprite background;
     
-    //L'instance de notre objet contrôleur
     private ShipControler controler;
 
-
-    public GameView(ShipControler controler, GameLevel gameLevel){ 
-        this.controler = controler;     
-        this.gameLevel = gameLevel;
-        this.elementsList = gameLevel.getGameElements();
-        
-        this.container = new JFrame();
-        
-        initComposant();                
-
-        background = SpriteStore.getStore().getSprite("spaceinvader/view/test_bg.jpg");
-        
-        addKeyListener(controler);
-        requestFocus();
-        
-        createBufferStrategy(3);
-	strategy = getBufferStrategy();
-    }
-    
+    /**
+     * Constructor of the gameview, with initialisation of the swing components.
+     * @param controler player controler
+     * @param gameLevel level to display to the player
+     */
     public GameView(ShipControler controler, GameLevel gameLevel, JFrame frame){ 
         this.controler = controler;     
         this.gameLevel = gameLevel;
@@ -113,6 +98,10 @@ public class GameView extends Canvas implements Observer{
         this.container.setVisible(true);
     }
     
+    /**
+     * The update is called every frame by the main loop while.
+     * It erases all the sprites and repaint it according to their new position.
+     */
     @Override
     public void update() {
         Graphics g = strategy.getDrawGraphics();
@@ -122,12 +111,14 @@ public class GameView extends Canvas implements Observer{
         
         
         background.draw(g, 0, 0, 1280, 720);
-        healthBar.draw(g);
+        
         
         this.elementsList = gameLevel.getGameElements();
         for(GameElement ge : elementsList){
             ge.draw(g);
         }
+        
+        healthBar.draw(g);
         
         g.dispose();
         strategy.show();

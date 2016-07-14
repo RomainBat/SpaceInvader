@@ -7,6 +7,7 @@ package spaceinvader.model.ships;
 
 import java.awt.Dimension;
 import java.awt.Rectangle;
+import java.util.ArrayList;
 import spaceinvader.model.movements.Moves;
 import spaceinvader.model.MovingElement;
 import spaceinvader.model.projectiles.Projectile;
@@ -22,7 +23,7 @@ public abstract class Ship extends MovingElement{
 
     protected int life;
     protected Weapon weapon;
-    private int counterHit = -1;
+    int counterHit = -1;
     private Sprite secondSprite;
 
     
@@ -46,7 +47,7 @@ public abstract class Ship extends MovingElement{
         return true;
     } 
     
-    public abstract Projectile shoot();
+    public abstract ArrayList<Projectile> shoot();
     
     public boolean isDead(){
         return (life <= 0);

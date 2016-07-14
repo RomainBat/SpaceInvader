@@ -12,7 +12,13 @@ import java.util.Timer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
+import spaceinvader.controler.ObserverItem;
 import spaceinvader.controler.ShipControler;
+import spaceinvader.model.items.Item;
+import spaceinvader.model.items.LaserCannon;
+import spaceinvader.model.movements.CircularMove;
+import spaceinvader.model.movements.StraightMove;
+import spaceinvader.model.ships.BonusAlien;
 import spaceinvader.model.ships.Boss;
 import spaceinvader.model.ships.ClassicTrashMob;
 import spaceinvader.model.ships.Spaceship;
@@ -33,6 +39,7 @@ public class GameLevel extends Thread{
     private GameView gv;
     private Timer timer;
     private int enemyNumber;
+    private BonusAlien bonusAlien;
     
 /*
     public GameLevel(Dimension groundDimension) {
@@ -68,7 +75,7 @@ public class GameLevel extends Thread{
         ship.setPosition(new Point(this.groundDimension.width/2-ship.getBody().width/2, 650));
         ship.addObserver(gv);
 
-        
+        bonusAlien = new BonusAlien(groundDimension, this);
         this.addGameElementToList(ship);
         this.sc = new ShipControler(ship, this);
         this.gv = new GameView(sc, this, frame);
@@ -90,6 +97,8 @@ public class GameLevel extends Thread{
             element = gameElements.get(i);
             if(!element.react())
                     gameElements.remove(element);
+            
+            //Collisions checking
             for(int j=i+1;j<gameElements.size();j++){
                 other = gameElements.get(j);
                 
@@ -102,11 +111,12 @@ public class GameLevel extends Thread{
 
     @Override
     public void run() {
-        int timer=300;
+        int timer=100;
         while(enemyNumber>0 || timer>0){
             this.sc.update();
             this.gv.update();
             this.makeGameElementsReact();
+            callTheBonusAlien();
             checkArmyMove();
             
             if(enemyNumber<=0)
@@ -121,13 +131,12 @@ public class GameLevel extends Thread{
     }
     
     public void checkArmyMove(){
-        int leftLimit = 50;
-        int rightLimit = groundDimension.width - 100;
+        int leftLimit = 0;
+        int rightLimit = groundDimension.width - army[0][0].getBody().width;
         for(int i=0;i<army.length;i++){
             for(int j=0;j<army[i].length;j++){
                 if(army[i][j].getBody().x <= leftLimit || 
                    army[i][j].getBody().x >= rightLimit){
-                    System.out.println("invert");
                     invertTrajectory();
                     return;
                 }
@@ -143,13 +152,26 @@ public class GameLevel extends Thread{
         }
     }
     
+    public void callTheBonusAlien(){
+        if(!gameElements.contains(bonusAlien)){
+            if((int)(Math.random()*1000)==10)
+                this.addGameElementToList(bonusAlien);
+        }
+    }
+    
     public void transitionBoss(Boss boss){
         boss.setPosition(new Point((groundDimension.width-boss.getBody().width)/2,0-boss.getBody().height));
         boss.setDy(1);
         this.addGameElementToList(boss);
-        while(!boss.isDead()){
-            if(boss.getPosition().y>=groundDimension.height/5)
+        do{
+            //if(boss.getPosition().y>=groundDimension.height/8)
+            if(boss.getPosition().y>=50 && boss.getMoves() instanceof StraightMove){
                 boss.setDy(0);
+                boss.IsInvicible(false);
+                /*boss.setMoves(new CircularMove());
+                ((CircularMove)boss.getMoves()).setAll(boss.getBody().x, boss.getBody().y, 100);
+                */
+            }
             this.sc.update();
             this.gv.update();
             this.makeGameElementsReact();
@@ -158,7 +180,9 @@ public class GameLevel extends Thread{
             } catch (InterruptedException ex) {
                 Logger.getLogger(SpaceInvader.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }
+        }while(!boss.isDead());
+        removeGameElementFromList(boss);
+        
     }
     
     public void breakTime(){
@@ -170,8 +194,12 @@ public class GameLevel extends Thread{
     }
     
     public void removeGameElementFromList(GameElement ge){
-        if(ge instanceof TrashMob)
-            this.enemyNumber--;
+        if(ge instanceof TrashMob) {
+            if (ge instanceof BonusAlien) {}
+            else{
+                this.enemyNumber--;
+            }
+        }
         gameElements.remove(ge);
     }
 
@@ -194,8 +222,9 @@ public class GameLevel extends Thread{
     
     public void initTestGameLevelBoss(){
         Boss boss = new Boss(this.groundDimension, this) {};
-        boss.setPosition(new Point((groundDimension.width-boss.getBody().width)/2,groundDimension.height/5));
-        this.addGameElementToList(boss);
+        BonusAlien bonus = new BonusAlien(groundDimension, this);
+        this.addGameElementToList(bonus);
+        transitionBoss(boss);
     }
     
 }
