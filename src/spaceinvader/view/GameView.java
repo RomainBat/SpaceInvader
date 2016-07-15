@@ -8,6 +8,7 @@ package spaceinvader.view;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.util.ArrayList;
@@ -17,13 +18,12 @@ import javax.swing.JPanel;
 import spaceinvader.controler.ShipControler;
 import spaceinvader.model.GameElement;
 import spaceinvader.model.GameLevel;
-import spaceinvader.model.Observer;
 
 /**
  *
  * @author qmatejka
  */
-public class GameView extends Canvas implements Observer{
+public class GameView extends Canvas{
 
     private JFrame container;
     private JPanel panel;
@@ -40,7 +40,7 @@ public class GameView extends Canvas implements Observer{
     
     private GameLevel gameLevel;
     
-    private Sprite background;
+    private Sprite background, gameover;
     
     private ShipControler controler;
 
@@ -59,6 +59,7 @@ public class GameView extends Canvas implements Observer{
         initComposant();                
 
         background = SpriteStore.getStore().getSprite("spaceinvader/view/test_bg.jpg");
+        gameover = SpriteStore.getStore().getSprite("spaceinvader/view/game_over.png");
         
         addKeyListener(controler);
         requestFocus();
@@ -102,10 +103,10 @@ public class GameView extends Canvas implements Observer{
      * The update is called every frame by the main loop while.
      * It erases all the sprites and repaint it according to their new position.
      */
-    @Override
     public void update() {
         Graphics g = strategy.getDrawGraphics();
         //Graphics2D g = (Graphics2D) strategy.getDrawGraphics();
+        g.setFont(new Font("Arial", Font.BOLD, 80));
         g.setColor(Color.black);
         g.fillRect(0, 0, gameLevel.getGroundDimension().width, gameLevel.getGroundDimension().height);
         
@@ -120,9 +121,19 @@ public class GameView extends Canvas implements Observer{
         
         healthBar.draw(g);
         
+        if(gameLevel.isPaused())
+            g.drawString("PAUSED",gameLevel.getGroundDimension().width/2-(int)(27.5*6), gameLevel.getGroundDimension().height/2+30);
+        
+        
+        if(controler.getShip().isDead())
+            gameover.draw(g, (gameLevel.getGroundDimension().width-560)/2, (gameLevel.getGroundDimension().height-76)/2, 560, 76);
+        
+        if(gameLevel.getBoss().isDead())
+            g.drawString("CONGRATULATIONS!",gameLevel.getGroundDimension().width/2-(int)(27.5*16), gameLevel.getGroundDimension().height/2+30);
+        
+        
         g.dispose();
         strategy.show();
-        //this.repaint();
     }
-    
+        
 }

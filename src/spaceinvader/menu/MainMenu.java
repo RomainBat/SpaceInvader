@@ -15,6 +15,7 @@ import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import spaceinvader.model.Game;
 import spaceinvader.model.GameLevel;
 
 /**
@@ -104,6 +105,7 @@ public class MainMenu extends JFrame implements KeyListener{
         mainMenu.select();
     }
     
+    
     /**
      * Nothing to declare
      * @param ke 
@@ -159,21 +161,26 @@ public class MainMenu extends JFrame implements KeyListener{
         }
         
         if(keys[KeyEvent.VK_SPACE] || keys[KeyEvent.VK_ENTER]){
-            GameLevel game;
+            Game game;
+            GameLevel gamel = new GameLevel(this);
             switch(this.selection){
                 case 0:
                     System.out.println("New Run");
                     finalPan.setVisible(false);
-                    game = new GameLevel(this);
-                    game.initTestGameLevelCircular();
-                    game.run();
+                    //game = new Game(this);
+                    //game.playGame();
+                    gamel.initTestGameLevel();
+                    gamel.run();
+                    gamel.transition(100);
+                    gamel.initTestGameLevelBoss();
+                    gamel.run();
+                    gamel.transition(100);
                     break;
                 case 1:
                     System.out.println("Continue");
                     finalPan.setVisible(false);
-                    game = new GameLevel(this);
-                    game.initTestGameLevelBoss();
-                    game.run();
+                    gamel.initTestGameLevelBoss();
+                    gamel.run();
                     //JOptionPane.showMessageDialog(this, "We're working on it !", "Hold your horses", JOptionPane.INFORMATION_MESSAGE);
                     break;
                 case 2:

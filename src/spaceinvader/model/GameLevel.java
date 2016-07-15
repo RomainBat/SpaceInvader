@@ -12,11 +12,7 @@ import java.util.Timer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
-import spaceinvader.controler.ObserverItem;
 import spaceinvader.controler.ShipControler;
-import spaceinvader.model.items.Item;
-import spaceinvader.model.items.LaserCannon;
-import spaceinvader.model.movements.CircularMove;
 import spaceinvader.model.movements.StraightMove;
 import spaceinvader.model.ships.BonusAlien;
 import spaceinvader.model.ships.Boss;
@@ -32,16 +28,18 @@ import spaceinvader.view.GameView;
  */
 public class GameLevel extends Thread{
     
+    private int             FPS = 100;
+    
     private Dimension groundDimension;
     private ArrayList<GameElement> gameElements;
     //private ArrayList<Observer> observatorAttempts;
     private TrashMob[][] army = new TrashMob[3][12];
     private ShipControler sc;
     private GameView gv;
-    private Timer timer;
     private int enemyNumber;
     private BonusAlien bonusAlien;
-    protected boolean pause = false;
+    private Boss boss;
+    protected boolean isPaused = false;
     
 /*
     public GameLevel(Dimension groundDimension) {
@@ -72,12 +70,12 @@ public class GameLevel extends Thread{
     public GameLevel(JFrame frame) {
         this.groundDimension = new Dimension(1280,720);
         this.gameElements = new ArrayList<GameElement>();
-        this.timer=new Timer();
         Spaceship ship = new Spaceship(this.groundDimension);
-        ship.setPosition(new Point(this.groundDimension.width/2-ship.getBody().width/2, 650));
-        ship.addObserver(gv);
+        ship.setPosition(new Point(this.groundDimension.width/2-ship.getBody().width/2, this.groundDimension.height-ship.getBody().height));
 
         bonusAlien = new BonusAlien(groundDimension, this);
+        boss = new Boss(this.groundDimension, this);
+        
         this.addGameElementToList(ship);
         this.sc = new ShipControler(ship, this);
         this.gv = new GameView(sc, this, frame);
@@ -113,25 +111,36 @@ public class GameLevel extends Thread{
 
     @Override
     public void run() {
-        int timer=100;
-        while(enemyNumber>0 || timer>0){
+        while(enemyNumber>0){
             this.sc.update();
-            if(!pause){
-                this.gv.update();
+            this.gv.update();
+            if(!isPaused){
                 this.makeGameElementsReact();
                 callTheBonusAlien();
-                //checkArmyMove();
+                checkArmyMove();
 
-                //if(enemyNumber<=0)
-                //    timer--;
                 try {
-                    Thread.sleep(1000/100);
+                    Thread.sleep(1000/FPS);
                 } catch (InterruptedException ex) {
                     Logger.getLogger(SpaceInvader.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }
         //transitionBoss(new Boss(this.groundDimension, this) {});
+    }
+    
+    public void transition(int time){
+        while(time>0){
+            this.sc.update();
+            this.gv.update();
+            this.makeGameElementsReact();
+            time--;
+            try {
+                Thread.sleep(1000/FPS);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(SpaceInvader.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }
     
     public void checkArmyMove(){
@@ -158,12 +167,14 @@ public class GameLevel extends Thread{
     
     public void callTheBonusAlien(){
         if(!gameElements.contains(bonusAlien)){
+            bonusAlien = new BonusAlien(groundDimension, this);
             if((int)(Math.random()*1000)==10)
                 this.addGameElementToList(bonusAlien);
         }
     }
     
     public void transitionBoss(Boss boss){
+        boolean replay = false;
         boss.setPosition(new Point((groundDimension.width-boss.getBody().width)/2,0-boss.getBody().height));
         boss.setDy(1);
         this.addGameElementToList(boss);
@@ -179,18 +190,19 @@ public class GameLevel extends Thread{
             this.sc.update();
             this.gv.update();
             this.makeGameElementsReact();
+            
             try {
-                Thread.sleep(1000/100);
+                Thread.sleep(1000/FPS);
             } catch (InterruptedException ex) {
                 Logger.getLogger(SpaceInvader.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }while(!boss.isDead());
+        }while(!boss.isDead() || !replay);
         removeGameElementFromList(boss);
         
     }
     
     public void breakTime(){
-        this.pause = !this.pause;
+        this.isPaused = !this.isPaused;
     }
     
     public void addGameElementToList(GameElement e){
@@ -209,6 +221,14 @@ public class GameLevel extends Thread{
 
     public Dimension getGroundDimension() {
         return groundDimension;
+    }
+
+    public boolean isPaused() {
+        return isPaused;
+    }
+
+    public Boss getBoss() {
+        return boss;
     }
     
     public void initTestGameLevelCircular(){
@@ -230,7 +250,6 @@ public class GameLevel extends Thread{
     }
     
     public void initTestGameLevelBoss(){
-        Boss boss = new Boss(this.groundDimension, this) {};
         BonusAlien bonus = new BonusAlien(groundDimension, this);
         this.addGameElementToList(bonus);
         transitionBoss(boss);
