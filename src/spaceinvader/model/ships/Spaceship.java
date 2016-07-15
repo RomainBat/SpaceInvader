@@ -30,7 +30,7 @@ public class Spaceship extends Ship{
     }
 
     public Spaceship(Dimension ground) {
-        super(new StraightMove(), new Rectangle(54, 54), ground, "spaceinvader/view/classic_ship.png", 3, null);
+        super(new StraightMove(), new Rectangle(54, 54), ground, "spaceinvader/view/classic_ship.png", 3, "spaceinvader/view/classic_ship_broken.png");
         weapon = new ClassicWeapon(true, 10);
         //weapon = new DoubleShotWeapon(true);
         this.liveMax=5;
@@ -40,6 +40,7 @@ public class Spaceship extends Ship{
     public boolean react() {
         //if(this.isCollidingWith(instanceof Projectile)){
         //move();
+        super.react();
         this.weapon.reload();
         return true;
     }

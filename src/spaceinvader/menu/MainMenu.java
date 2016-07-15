@@ -79,10 +79,8 @@ public class MainMenu extends JFrame implements KeyListener{
      */
     public void select(){
         while(true){
-            System.out.println("sel");
             if(!pressed){
                 this.update();
-                System.out.println("selpressed");
             }
             try {
                 sleep(1000/60);
@@ -173,6 +171,7 @@ public class MainMenu extends JFrame implements KeyListener{
                     gamel.transition(150);
                     gamel.getGv().setVisible(false);
                     finalPan.setVisible(true);
+                    this.pressed=false;
                     break;
                 case 1:
                     System.exit(0);
