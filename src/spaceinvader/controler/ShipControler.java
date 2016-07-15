@@ -21,7 +21,7 @@ public class ShipControler implements KeyListener{
     private Spaceship ship;
     private GameLevel gameLevel;
     private boolean[] keys = new boolean[100];
-    private boolean pressed = false;
+    private boolean escPressed = false;
 
     public ShipControler(Spaceship ship, GameLevel gl) {
         this.ship = ship;
@@ -47,7 +47,7 @@ public class ShipControler implements KeyListener{
     public void keyReleased(KeyEvent ke) {
         keys[ke.getKeyCode()] = false;
         ship.setDx(0);
-        this.pressed = false;
+        this.escPressed = false;
     }
     
     /**
@@ -55,38 +55,39 @@ public class ShipControler implements KeyListener{
      * We don't use a switch to be able to manage 2 events if the player hits 2 key in the same time.
      */
     public void update() {
-        if(keys[KeyEvent.VK_W] || keys[KeyEvent.VK_UP]){
-        }
+        if(!gameLevel.isPaused()){
+            if(keys[KeyEvent.VK_W] || keys[KeyEvent.VK_UP]){
+            }
 
-        if(keys[KeyEvent.VK_S] || keys[KeyEvent.VK_DOWN]){
-        }
+            if(keys[KeyEvent.VK_S] || keys[KeyEvent.VK_DOWN]){
+            }
 
-        if(keys[KeyEvent.VK_Q] || keys[KeyEvent.VK_LEFT]){
-            ship.setDx(-4);
-            ship.move();
-            //ship.notifyObs();
-        }
+            if(keys[KeyEvent.VK_Q] || keys[KeyEvent.VK_LEFT]){
+                ship.setDx(-4);
+                ship.move();
+                //ship.notifyObs();
+            }
 
-        if(keys[KeyEvent.VK_D] || keys[KeyEvent.VK_RIGHT]){
-            ship.setDx(4);
-            ship.move();
-            //ship.notifyObs();
-        }
-        
-        if(keys[KeyEvent.VK_SPACE]){
-            ArrayList<Projectile> projs = ship.shoot();
-            for(Projectile proj : projs){
-                if(proj!=null){
-                    proj.addObserver(new ObserverShot(gameLevel));
-                    gameLevel.addGameElementToList(proj);
+            if(keys[KeyEvent.VK_D] || keys[KeyEvent.VK_RIGHT]){
+                ship.setDx(4);
+                ship.move();
+                //ship.notifyObs();
+            }
+
+            if(keys[KeyEvent.VK_SPACE]){
+                ArrayList<Projectile> projs = ship.shoot();
+                for(Projectile proj : projs){
+                    if(proj!=null){
+                        proj.addObserver(new ObserverShot(gameLevel));
+                        gameLevel.addGameElementToList(proj);
+                    }
                 }
             }
         }
-        
-        if(keys[KeyEvent.VK_ESCAPE] && (!this.pressed)){
+        if(keys[KeyEvent.VK_ESCAPE] && (!this.escPressed)){
+            System.out.println("pause");
             gameLevel.breakTime();
-            System.out.println("c la pause lol");
-            this.pressed = true;
+            this.escPressed = true;
         }
             
     }

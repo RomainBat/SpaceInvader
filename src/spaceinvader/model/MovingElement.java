@@ -9,6 +9,7 @@ import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Rectangle;
 import spaceinvader.model.movements.Moves;
+import spaceinvader.model.ships.BonusAlien;
 
 /**
  *
@@ -47,13 +48,16 @@ public abstract class MovingElement extends GameElement {
         this.dy = newDir.y;
         double x = this.getPosition().x + this.dx;
         double y = this.getPosition().y + this.dy;
-        setPosition(new Point((int)x,(int)y));
+        if(this instanceof BonusAlien)
+            this.getBody().setLocation(new Point((int)x,(int)y));
+        else
+            setPosition(new Point((int)x,(int)y));
     }
     
     public boolean isOutOfTheScreen(){
         int x = (int)this.getPosition().getX();
         int y = (int)this.getPosition().getY();
-        return this.getGround().width<x && this.getGround().height<y;
+        return this.getGround().width<x || this.getGround().height<y;
     }
     
     public abstract boolean react();

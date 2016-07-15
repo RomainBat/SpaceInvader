@@ -24,7 +24,7 @@ import spaceinvader.model.weapons.ClassicWeapon;
  *
  * @author asus
  */
-public abstract class Boss extends Alien{
+public class Boss extends Alien{
 
     private int shotCounting = 0;
     private int charging = 200;

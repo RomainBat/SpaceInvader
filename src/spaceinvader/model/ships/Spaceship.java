@@ -10,13 +10,11 @@ import java.awt.Point;
 import java.awt.Rectangle;
 import java.util.ArrayList;
 import spaceinvader.model.GameElement;
-import spaceinvader.model.Observer;
 import spaceinvader.model.items.Item;
 import spaceinvader.model.movements.Moves;
 import spaceinvader.model.movements.StraightMove;
 import spaceinvader.model.projectiles.Projectile;
 import spaceinvader.model.weapons.ClassicWeapon;
-import spaceinvader.model.weapons.DoubleShotWeapon;
 import spaceinvader.model.weapons.Weapon;
 
 /**
@@ -25,7 +23,6 @@ import spaceinvader.model.weapons.Weapon;
  */
 public class Spaceship extends Ship{
 
-    protected Observer obs;
     private int liveMax;
     
     public Spaceship(Moves moves, Rectangle body, Dimension ground, String imagePath, String secondSpriteRef) {
@@ -33,7 +30,7 @@ public class Spaceship extends Ship{
     }
 
     public Spaceship(Dimension ground) {
-        super(new StraightMove(), new Rectangle(70, 70), ground, "spaceinvader/view/classic_ship_0.png", 3, null);
+        super(new StraightMove(), new Rectangle(54, 54), ground, "spaceinvader/view/classic_ship.png", 3, null);
         weapon = new ClassicWeapon(true, 10);
         //weapon = new DoubleShotWeapon(true);
         this.liveMax=5;
@@ -74,14 +71,6 @@ public class Spaceship extends Ship{
     @Override
     public void collidedWith(GameElement ge) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
-    public void notifyObs(){
-        obs.update();
-    }
-    
-    public void addObserver(Observer obs){
-        this.obs=obs;
     }
     
     public Weapon getWeapon() {

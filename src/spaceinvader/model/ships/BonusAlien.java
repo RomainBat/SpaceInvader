@@ -42,8 +42,12 @@ public class BonusAlien extends TrashMob{
 
     @Override
     public boolean react() {
-        this.move();
-        return true;
+        if(isOutOfTheScreen()){
+            return false;
+        }else{
+            this.move();
+            return true;
+        }
     }
 
     @Override
