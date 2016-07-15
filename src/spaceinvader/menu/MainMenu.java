@@ -24,11 +24,11 @@ import spaceinvader.model.GameLevel;
  */
 public class MainMenu extends JFrame implements KeyListener{
     
-    public static final int WIDTH = 800; //Size...
-    public static final int HEIGHT = 600; //Of the window
+    public static final int WIDTH = 1280; //Size...
+    public static final int HEIGHT = 720; //Of the window
     
     private final ArrayList<Button> listOfButton = new ArrayList<>(); //List of Button of the menu
-    private static final int SIZE = 3; //Number of buttons of the menu
+    private static final int SIZE = 2; //Number of buttons of the menu
     private int selection = 0; //The index of the button currently selected by the user
     
     private boolean[] keys = new boolean[100]; //needed for key listener
@@ -37,7 +37,6 @@ public class MainMenu extends JFrame implements KeyListener{
     
     private final JPanel line1 =new JPanel(); //first line of button
     private final JPanel line2 =new JPanel(); //seconfd line of button
-    private final JPanel line3 =new JPanel(); //third line of button
     private final JPanel finalPan = new JPanel(); //global JPanel containing the others
     
     /**
@@ -58,7 +57,6 @@ public class MainMenu extends JFrame implements KeyListener{
         
         this.listOfButton.add(new Button("src/spaceinvader/menu/newRun",225,50,true));
         this.listOfButton.add(new Button("src/spaceinvader/menu/continue",225,50));
-        this.listOfButton.add(new Button("src/spaceinvader/menu/settings",225,50));
         
         line1.setLayout(new BoxLayout(line1, BoxLayout.LINE_AXIS));
         line1.add((JPanel)this.listOfButton.get(0));
@@ -66,13 +64,9 @@ public class MainMenu extends JFrame implements KeyListener{
         line2.setLayout(new BoxLayout(line2, BoxLayout.LINE_AXIS));
         line2.add((JPanel)this.listOfButton.get(1));
         
-        line3.setLayout(new BoxLayout(line3, BoxLayout.LINE_AXIS));
-        line3.add((JPanel)this.listOfButton.get(2));
-        
         finalPan.setLayout(new BoxLayout(finalPan, BoxLayout.PAGE_AXIS));
         finalPan.add(line1);
         finalPan.add(line2);
-        finalPan.add(line3);
         
         this.getContentPane().add(finalPan);
         this.setVisible(true);
@@ -85,8 +79,10 @@ public class MainMenu extends JFrame implements KeyListener{
      */
     public void select(){
         while(true){
+            System.out.println("sel");
             if(!pressed){
                 this.update();
+                System.out.println("selpressed");
             }
             try {
                 sleep(1000/60);
@@ -174,18 +170,13 @@ public class MainMenu extends JFrame implements KeyListener{
                     gamel.transition(100);
                     gamel.initTestGameLevelBoss();
                     gamel.run();
-                    gamel.transition(100);
+                    gamel.transition(150);
+                    gamel.getGv().setVisible(false);
+                    finalPan.setVisible(true);
                     break;
                 case 1:
-                    System.out.println("Continue");
-                    finalPan.setVisible(false);
-                    gamel.initTestGameLevelBoss();
-                    gamel.run();
+                    System.exit(0);
                     //JOptionPane.showMessageDialog(this, "We're working on it !", "Hold your horses", JOptionPane.INFORMATION_MESSAGE);
-                    break;
-                case 2:
-                    System.out.println("Settings");
-                    JOptionPane.showMessageDialog(this, "We're working on it !", "Hold your horses", JOptionPane.INFORMATION_MESSAGE);
                     break;
                 default:
                     System.out.println("Error");

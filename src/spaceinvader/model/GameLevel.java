@@ -174,29 +174,27 @@ public class GameLevel extends Thread{
     }
     
     public void transitionBoss(Boss boss){
-        boolean replay = false;
         boss.setPosition(new Point((groundDimension.width-boss.getBody().width)/2,0-boss.getBody().height));
         boss.setDy(1);
         this.addGameElementToList(boss);
         do{
-            //if(boss.getPosition().y>=groundDimension.height/8)
-            if(boss.getPosition().y>=50 && boss.getMoves() instanceof StraightMove){
-                boss.setDy(0);
-                boss.IsInvicible(false);
-                /*boss.setMoves(new CircularMove());
-                ((CircularMove)boss.getMoves()).setAll(boss.getBody().x, boss.getBody().y, 100);
-                */
-            }
             this.sc.update();
             this.gv.update();
-            this.makeGameElementsReact();
-            
-            try {
-                Thread.sleep(1000/FPS);
-            } catch (InterruptedException ex) {
-                Logger.getLogger(SpaceInvader.class.getName()).log(Level.SEVERE, null, ex);
+            if(!isPaused){
+                if(boss.getPosition().y>=50 && boss.getMoves() instanceof StraightMove){
+                    boss.setDy(0);
+                    boss.IsInvicible(false);
+
+                }
+                this.makeGameElementsReact();
+
+                try {
+                    Thread.sleep(1000/FPS);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(SpaceInvader.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
-        }while(!boss.isDead() || !replay);
+        }while(!boss.isDead());
         removeGameElementFromList(boss);
         
     }
@@ -229,6 +227,10 @@ public class GameLevel extends Thread{
 
     public Boss getBoss() {
         return boss;
+    }
+
+    public GameView getGv() {
+        return gv;
     }
     
     public void initTestGameLevelCircular(){
